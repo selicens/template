@@ -8,12 +8,12 @@ import {
   DesktopOutlined,
   LeftOutlined,
   RightOutlined,
-  TranslationOutlined,
   LogoutOutlined,
   QuestionCircleOutlined,
   SmileOutlined,
   DownOutlined
 } from '@ant-design/icons-vue';
+import InternationalIzation from '../icons/Internationalization.vue';
 
 defineOptions({
   name: 'BasicLayout'
@@ -22,28 +22,32 @@ defineOptions({
 interface Props {
   logo?: string,
   title?: string
-  router?: string[] 
+  router?: string[]
 }
 const props = withDefaults(defineProps<Props>(), {
   logo: 'https://vuejs.org/images/logo.png',
-  title: 'Admin Layout'
+  title: 'Admin Template'
 })
 
 defineSlots<{
   logo: any,
   title: any,
   content: any,
-  menu: any,
-  footer: any
+  navbar: any,
+  footer: any,
+  breadcrumb: any,
 }>()
 
 const headerStyle: CSSProperties = {
   height: '56px',
   lineHeight:' 56px',
-  backgroundColor: 'transparent',
+  backgroundColor: 'rgba(255, 255, 255, 0.6)',
   zIndex: '19',
   borderBlockEnd: '1px solid rgba(5, 5, 5, 0.06)',
   paddingInline: '10px',
+  userSelect: 'none',
+  backdropFilter: 'blur(8px)',
+  transition: 'background-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)'
 };
 
 const contentStyle: CSSProperties = {
@@ -51,7 +55,8 @@ const contentStyle: CSSProperties = {
   color: 'black',
   backgroundColor: 'transparent',
   height: '100%',
-  padding: '24px'
+  padding: '24px',
+  userSelect: 'none'
 };
 
 const siderStyle: CSSProperties = {
@@ -70,61 +75,11 @@ const footerStyle: CSSProperties = {
   textAlign: 'center',
   color: 'black',
   backgroundColor: 'transparent',
+  userSelect: 'none'
 };
 
 const selectedKeys = ref<string[]>([]);
 const collapsed = ref(false)
-const columns = [
-  {
-    name: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-  },
-  {
-    title: 'Action',
-    key: 'action',
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp', 'https://aliyuncdn.antdv.com/vue.png'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp', 'https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['https://aliyuncdn.antdv.com/logo.png', 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
-  },
-];
-const visible = ref(data.map(() => ({visible: false})))
 </script>
 
 <template>
@@ -140,7 +95,7 @@ const visible = ref(data.map(() => ({visible: false})))
             <QuestionCircleOutlined />
           </a-dropdown>
           <a-dropdown>
-            <TranslationOutlined />
+            <InternationalIzation />
             <template #overlay>
               <a-menu>
                 <a-menu-item>CN 简体中文</a-menu-item>
@@ -169,6 +124,7 @@ const visible = ref(data.map(() => ({visible: false})))
     </a-layout-header>
     <a-layout>
       <a-layout-sider :style="siderStyle" v-model:collapsed="collapsed">
+          <slot name="navbar" />
           <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
             <a-menu-item key="1">
               <component :is="PieChartOutlined" />
@@ -203,6 +159,34 @@ const visible = ref(data.map(() => ({visible: false})))
               <file-outlined />
               <span>File</span>
             </a-menu-item>
+            <a-menu-item key="10">
+              <file-outlined />
+              <span>File</span>
+            </a-menu-item>
+            <a-menu-item key="11">
+              <file-outlined />
+              <span>File</span>
+            </a-menu-item>
+            <a-menu-item key="12">
+              <file-outlined />
+              <span>File</span>
+            </a-menu-item>
+            <a-menu-item key="13">
+              <file-outlined />
+              <span>File</span>
+            </a-menu-item>
+            <a-menu-item key="14">
+              <file-outlined />
+              <span>File</span>
+            </a-menu-item>
+            <a-menu-item key="15">
+              <file-outlined />
+              <span>File</span>
+            </a-menu-item>
+            <a-menu-item key="16">
+              <file-outlined />
+              <span>File</span>
+            </a-menu-item>
           </a-menu>
           <div class="layout-sider-collapsed-button" @click="collapsed = !collapsed">
             <template v-if="collapsed">
@@ -224,50 +208,6 @@ const visible = ref(data.map(() => ({visible: false})))
           <slot name="content">
             <a-card>
               Content
-              <a-table :columns="columns" :data-source="data">
-                <template #headerCell="{ column }">
-                  <template v-if="column.key === 'name'">
-                    <span>
-                      <smile-outlined />
-                      Name
-                    </span>
-                  </template>
-                </template>
-
-                <template #bodyCell="{ column, record }">
-                  <template v-if="column.key === 'name'">
-                    <a>
-                      {{ record.name }}
-                    </a>
-                  </template>
-                  <template v-else-if="column.key === 'tags'">
-                    <a-image
-                      :preview="{ visible: false }"
-                      :width="100"
-                      :src="record.tags[0]"
-                      @click="visible[data.findIndex((item) => item === record)].visible = true" 
-                    />
-                    <div style="display: none">
-                      <a-image-preview-group :preview="{ visible: visible[data.findIndex((item) => item === record)].visible, onVisibleChange: vis => (visible[data.findIndex((item) => item === record)].visible = vis) }">
-                        <a-image :src="record.tags[0]" ></a-image>
-                        <a-image :src="record.tags[1]" ></a-image>
-                      </a-image-preview-group>
-                    </div>
-                  </template>
-                  <template v-else-if="column.key === 'action'">
-                    <span>
-                      <a>Invite 一 {{ record.name }}</a>
-                      <a-divider type="vertical" />
-                      <a>Delete</a>
-                      <a-divider type="vertical" />
-                      <a class="ant-dropdown-link">
-                        More actions
-                        <down-outlined />
-                      </a>
-                    </span>
-                  </template>
-                </template>
-              </a-table>
             </a-card>
           </slot>
         </a-layout-content>
@@ -277,10 +217,10 @@ const visible = ref(data.map(() => ({visible: false})))
       </a-layout>
     </a-layout>
   </a-layout>
-  <img src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr" style="position: absolute; bottom: 0px; left: 0px; width: 331px;"> 
+  <img src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr" style="position: absolute; bottom: 0px; left: 0px; width: 331px;">
 </template>
 
-<style scoped>  
+<style scoped>
 .ant-layout {
   min-height: 100%;
 }

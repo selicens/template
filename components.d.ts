@@ -29,6 +29,7 @@ declare module 'vue' {
     ATable: typeof import('ant-design-vue/es')['Table']
     ATag: typeof import('ant-design-vue/es')['Tag']
     BasicLayout: typeof import('./src/components/layouts/BasicLayout.vue')['default']
+    Internationalization: typeof import('./src/components/icons/Internationalization.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
