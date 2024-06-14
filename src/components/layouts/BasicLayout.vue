@@ -10,8 +10,6 @@ import {
   RightOutlined,
   LogoutOutlined,
   QuestionCircleOutlined,
-  SmileOutlined,
-  DownOutlined
 } from '@ant-design/icons-vue';
 import InternationalIzation from '../icons/Internationalization.vue';
 
@@ -84,6 +82,10 @@ const collapsed = ref(false)
 
 <template>
   <a-layout>
+    <slot name="announcement">
+      <a-alert message="公告: xxxxxxxx" banner closable type="info">
+      </a-alert>
+    </slot>
     <a-layout-header :style="headerStyle">
       <div class="layout-header">
         <a class="layout-header-left">
@@ -159,34 +161,6 @@ const collapsed = ref(false)
               <file-outlined />
               <span>File</span>
             </a-menu-item>
-            <a-menu-item key="10">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
-            <a-menu-item key="11">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
-            <a-menu-item key="12">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
-            <a-menu-item key="13">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
-            <a-menu-item key="14">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
-            <a-menu-item key="15">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
-            <a-menu-item key="16">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
           </a-menu>
           <div class="layout-sider-collapsed-button" @click="collapsed = !collapsed">
             <template v-if="collapsed">
@@ -220,61 +194,4 @@ const collapsed = ref(false)
   <img src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr" style="position: absolute; bottom: 0px; left: 0px; width: 331px;">
 </template>
 
-<style scoped>
-.ant-layout {
-  min-height: 100%;
-}
-.ant-menu {
-  min-height: 100%;
-  background-color: transparent;
-  flex: 1 1 0%;
-  overflow: hidden auto;
-}
-.ant-menu-light.ant-menu-root.ant-menu-inline,
-.ant-menu-light.ant-menu-root.ant-menu-vertical {
-  border-inline-end: none;
-}
-.layout-header {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-.layout-header-left{
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-.layout-header-left-title {
-  height:32px;
-  margin-block:0;
-  margin-inline:0;
-  margin-inline-start:8px;
-  font-weight:600;
-  color:rgba(0, 0, 0, 0.88);
-  font-size:18px;
-  line-height:32px;
-}
-.layout-header-right {
-  color: rgba(0, 0, 0, 0.45);
-}
-.layout-sider-collapsed-button {
-    position: absolute;
-    inset-block-start: 18px;
-    z-index: 101;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-    border-radius: 40px;
-    inset-inline-end: -13px;
-    transition: transform 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.25);
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px -2px rgba(0,0,0,0.05), 0 1px 4px -1px rgba(25,15,15,0.07), 0 0 1px 0 rgba(0,0,0,0.08);
-}
-</style>
+<style scoped src="./basic.css"></style>

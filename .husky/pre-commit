@@ -1,1 +1,5 @@
-pnpm test
+echo "husky lint-staged start"
+
+npx lint-staged
+
+echo "husky lint-staged end"
