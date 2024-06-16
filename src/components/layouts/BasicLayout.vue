@@ -18,9 +18,10 @@ defineOptions({
 });
 
 interface Props {
-  logo?: string,
+  logo?: string
   title?: string
   router?: string[]
+  layout: 'default' | 'top' | 'right'
 }
 const props = withDefaults(defineProps<Props>(), {
   logo: 'https://vuejs.org/images/logo.png',
@@ -34,6 +35,7 @@ defineSlots<{
   navbar: any,
   footer: any,
   breadcrumb: any,
+  noticebar: any,
 }>()
 
 const headerStyle: CSSProperties = {
@@ -82,14 +84,14 @@ const collapsed = ref(false)
 
 <template>
   <a-layout>
-    <slot name="announcement">
-      <a-alert message="公告: xxxxxxxx" banner closable type="info">
+    <slot name="noticebar">
+      <a-alert message="公告: 超市狂欢季，折扣来袭！买得越多，省得越多！一站式购物，全场满减，品质生活，从此开始！别错过，速来抢购，让优惠装满你的购物车" banner closable type="info">
       </a-alert>
     </slot>
     <a-layout-header :style="headerStyle">
       <div class="layout-header">
         <a class="layout-header-left">
-          <slot name="logo"><img width="auto" height="22" :src="props.logo" alt="logo"></slot>
+          <slot name="logo" class="layout-header-left-logo"><img width="auto" height="22" :src="props.logo" alt="logo"></slot>
           <h1 class="layout-header-left-title"><slot name="title">{{ props.title }}</slot></h1>
         </a>
         <a-space size="middle" class="layout-header-right">
@@ -126,50 +128,50 @@ const collapsed = ref(false)
     </a-layout-header>
     <a-layout>
       <a-layout-sider :style="siderStyle" v-model:collapsed="collapsed">
-          <slot name="navbar" />
-          <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
-            <a-menu-item key="1">
-              <component :is="PieChartOutlined" />
-              <span>Option 1</span>
-            </a-menu-item>
-            <a-menu-item key="2">
-              <desktop-outlined />
-              <span>Option 2</span>
-            </a-menu-item>
-            <a-sub-menu key="sub1">
-              <template #title>
-                <span>
-                  <user-outlined />
-                  <span>User</span>
-                </span>
-              </template>
-              <a-menu-item key="3">Tom</a-menu-item>
-              <a-menu-item key="4">Bill</a-menu-item>
-              <a-menu-item key="5">Alex</a-menu-item>
-            </a-sub-menu>
-            <a-sub-menu key="sub2">
-              <template #title>
-                <span>
-                  <team-outlined />
-                  <span>Team</span>
-                </span>
-              </template>
-              <a-menu-item key="6">Team 1</a-menu-item>
-              <a-menu-item key="8">Team 2</a-menu-item>
-            </a-sub-menu>
-            <a-menu-item key="9">
-              <file-outlined />
-              <span>File</span>
-            </a-menu-item>
-          </a-menu>
-          <div class="layout-sider-collapsed-button" @click="collapsed = !collapsed">
-            <template v-if="collapsed">
-              <RightOutlined />
+        <slot name="navbar" />
+        <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
+          <a-menu-item key="1">
+            <component :is="PieChartOutlined" />
+            <span>Option 1</span>
+          </a-menu-item>
+          <a-menu-item key="2">
+            <desktop-outlined />
+            <span>Option 2</span>
+          </a-menu-item>
+          <a-sub-menu key="sub1">
+            <template #title>
+              <span>
+                <user-outlined />
+                <span>User</span>
+              </span>
             </template>
-            <template v-else>
-              <LeftOutlined />
+            <a-menu-item key="3">Tom</a-menu-item>
+            <a-menu-item key="4">Bill</a-menu-item>
+            <a-menu-item key="5">Alex</a-menu-item>
+          </a-sub-menu>
+          <a-sub-menu key="sub2">
+            <template #title>
+              <span>
+                <team-outlined />
+                <span>Team</span>
+              </span>
             </template>
-          </div>
+            <a-menu-item key="6">Team 1</a-menu-item>
+            <a-menu-item key="8">Team 2</a-menu-item>
+          </a-sub-menu>
+          <a-menu-item key="9">
+            <file-outlined />
+            <span>File</span>
+          </a-menu-item>
+        </a-menu>
+        <div class="layout-sider-collapsed-button" @click="collapsed = !collapsed">
+          <template v-if="collapsed">
+            <RightOutlined />
+          </template>
+          <template v-else>
+            <LeftOutlined />
+          </template>
+        </div>
         </a-layout-sider>
       <a-layout>
         <a-layout-content :style="contentStyle">
