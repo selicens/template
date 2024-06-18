@@ -14,6 +14,7 @@ declare module 'vue' {
     ABreadcrumbItem: typeof import('ant-design-vue/es')['BreadcrumbItem']
     ACard: typeof import('ant-design-vue/es')['Card']
     ADivider: typeof import('ant-design-vue/es')['Divider']
+    ADrawer: typeof import('ant-design-vue/es')['Drawer']
     ADropdown: typeof import('ant-design-vue/es')['Dropdown']
     AFlex: typeof import('ant-design-vue/es')['Flex']
     AImage: typeof import('ant-design-vue/es')['Image']
