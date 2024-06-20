@@ -1,3 +1,3 @@
 export default {
-  title: 'dashboard-workplace',
+  title: '工作台',
 };

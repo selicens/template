@@ -4,9 +4,8 @@
  */
  (function () {
   const div = document.createElement('div')
-  const body = document.querySelector('body')
-  body.appendChild(div)
   div.setAttribute('id', 'loading-app')
+  document.body.appendChild(div)
   if (div && div.innerHTML === '') {
     div.innerHTML = `
       <style>
@@ -17,6 +16,7 @@
           margin: 0;
           padding: 0;
         }
+
         #loading-app {
           position: fixed;
           top: 0;
@@ -26,6 +26,7 @@
           z-index: 9999;
           background-repeat: no-repeat;
           background-size: 100% auto;
+          user-select: none;
         }
 
         .loading-title {
@@ -44,6 +45,7 @@
           justify-content: center;
           padding: 26px;
         }
+
         .ant-spin {
           position: absolute;
           display: none;

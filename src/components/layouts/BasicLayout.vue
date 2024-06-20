@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, type CSSProperties } from 'vue';
+import type { CSSProperties } from 'vue';
 import {
   UserOutlined,
   TeamOutlined,
@@ -86,26 +86,11 @@ const isViewport = computed(() => {
   return viewportWidth.value < 768 ? false : true
 })
 const drawerOpen = ref(false)
+const formRef = ref()
 onMounted(() => {
   window.addEventListener('resize', () => {
     viewportWidth.value = window.innerWidth || document.documentElement.clientWidth
   })
-  const configs = import.meta.glob('../../views/**/index.ts', { eager: true, import: 'default' })
-  const components = import.meta.glob('../../views/**/index.vue', { eager: true, import: 'default' })
-  const routes = []
-  const generateRoutes = () => {
-    for (const key in configs) {
-      const path = key.replace('../../views', '').replace(/\/index\.ts$/, '')
-      const name = configs[key].title
-      routes.push({
-        path: path,
-        name: name,
-        component: components[1]
-      })
-    }
-  }
-  generateRoutes()
-  console.log(routes)
 })
 </script>
 
@@ -213,7 +198,9 @@ onMounted(() => {
           </slot>
           <slot name="content">
             <a-card>
-              Content
+              <a-form ref="formRef">
+                <a-input value="1433223"></a-input>
+              </a-form>
             </a-card>
           </slot>
         </a-layout-content>

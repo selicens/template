@@ -1,3 +1,3 @@
 export default {
-  title: 'dashboard-monitor',
+  title: '监控页',
 };

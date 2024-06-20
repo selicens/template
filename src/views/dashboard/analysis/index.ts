@@ -1,3 +1,3 @@
 export default {
-  title: 'dashboard-analysis'
+  title: '分析页'
 }
