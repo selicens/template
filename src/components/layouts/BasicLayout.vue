@@ -147,7 +147,7 @@ onMounted(() => {
         <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
           <a-menu-item key="1">
             <component :is="PieChartOutlined" />
-            <span>Option 1</span>
+            <span @click="() => $router.push('/dashboard/analysis')">Option 1</span>
           </a-menu-item>
           <a-menu-item key="2">
             <desktop-outlined />
@@ -197,11 +197,7 @@ onMounted(() => {
             </a-breadcrumb>
           </slot>
           <slot name="content">
-            <a-card>
-              <a-form ref="formRef">
-                <a-input value="1433223"></a-input>
-              </a-form>
-            </a-card>
+            <router-view />
           </slot>
         </a-layout-content>
         <a-layout-footer :style="footerStyle">
