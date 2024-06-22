@@ -145,10 +145,17 @@ onMounted(() => {
       <a-layout-sider :style="siderStyle" v-model:collapsed="collapsed" v-if="isViewport">
         <slot name="navbar" />
         <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
-          <a-menu-item key="1">
-            <component :is="PieChartOutlined" />
-            <span @click="() => $router.push('/dashboard/analysis')">Option 1</span>
-          </a-menu-item>
+          <a-sub-menu key="dashboard">
+            <template #title>
+              <span>
+                <user-outlined />
+                <span>dashboard</span>
+              </span>
+            </template>
+            <a-menu-item key="analysis" @click="() => $router.push('/dashboard/analysis')">analysis</a-menu-item>
+            <a-menu-item key="workplace" @click="() => $router.push('/dashboard/workplace')">workplace</a-menu-item>
+            <a-menu-item key="monitor" @click="() => $router.push('/dashboard/monitor')">monitor</a-menu-item>
+          </a-sub-menu>
           <a-menu-item key="2">
             <desktop-outlined />
             <span>Option 2</span>

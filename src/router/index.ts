@@ -59,7 +59,7 @@ const buildNestedRoutes = (routes: RouteRecordRaw[]) => {
 console.log(buildNestedRoutes(generateStaticRoutes))
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: []
+  routes: buildNestedRoutes(generateStaticRoutes)
 })
 
 export default router
