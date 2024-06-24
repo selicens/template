@@ -153,8 +153,8 @@ onMounted(() => {
               </span>
             </template>
             <a-menu-item key="analysis" @click="() => $router.push('/dashboard/analysis')">analysis</a-menu-item>
-            <a-menu-item key="workplace" @click="() => $router.push('/dashboard/workplace')">workplace</a-menu-item>
             <a-menu-item key="monitor" @click="() => $router.push('/dashboard/monitor')">monitor</a-menu-item>
+            <a-menu-item key="workplace" @click="() => $router.push('/dashboard/workplace')">workplace</a-menu-item>
           </a-sub-menu>
           <a-menu-item key="2">
             <desktop-outlined />
