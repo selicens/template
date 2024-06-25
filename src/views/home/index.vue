@@ -1,5 +1,5 @@
 <script setup>
-  defineOptions({ name: 'home' })
+defineOptions({ name: 'home' })
 </script>
 
 <template>home</template>

@@ -1,3 +1,3 @@
 export default {
-  title: '监控页',
-};
+  title: '监控页'
+}

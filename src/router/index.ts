@@ -19,7 +19,7 @@ const generateStaticRoutes = Object.entries(configs).map(([key, value]) => {
 const buildNestedRoutes = (routes: RouteRecordRaw[]) => {
   const routeMap: Record<string, RouteRecordRaw> = {}
 
-  routes.forEach(route => {
+  routes.forEach((route) => {
     const parts = route.path.split('/').filter(Boolean)
     let currentLevel: Record<string, RouteRecordRaw> = routeMap
 
@@ -46,8 +46,8 @@ const buildNestedRoutes = (routes: RouteRecordRaw[]) => {
     })
   })
 
-  const buildRoutesArray = (routeObj:Record<string, RouteRecordRaw>) => {
-    return Object.values(routeObj).map(route => ({
+  const buildRoutesArray = (routeObj: Record<string, RouteRecordRaw>) => {
+    return Object.values(routeObj).map((route) => ({
       ...route,
       children: buildRoutesArray(route.children)
     }))

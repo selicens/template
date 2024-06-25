@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CSSProperties } from 'vue';
+import type { CSSProperties } from 'vue'
 import {
   UserOutlined,
   TeamOutlined,
@@ -11,12 +11,12 @@ import {
   LogoutOutlined,
   QuestionCircleOutlined,
   MenuOutlined
-} from '@ant-design/icons-vue';
-import InternationalIzation from '../icons/Internationalization.vue';
+} from '@ant-design/icons-vue'
+import InternationalIzation from '../icons/Internationalization.vue'
 
 defineOptions({
   name: 'BasicLayout'
-});
+})
 
 interface Props {
   logo?: string
@@ -30,18 +30,18 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 defineSlots<{
-  logo: any,
-  title: any,
-  content: any,
-  navbar: any,
-  footer: any,
-  breadcrumb: any,
-  noticeBar: any,
+  logo: any
+  title: any
+  content: any
+  navbar: any
+  footer: any
+  breadcrumb: any
+  noticeBar: any
 }>()
 
 const headerStyle: CSSProperties = {
   height: '56px',
-  lineHeight:' 56px',
+  lineHeight: ' 56px',
   backgroundColor: 'rgba(255, 255, 255, 0.6)',
   zIndex: '19',
   borderBlockEnd: '1px solid rgba(5, 5, 5, 0.06)',
@@ -49,16 +49,15 @@ const headerStyle: CSSProperties = {
   userSelect: 'none',
   backdropFilter: 'blur(8px)',
   transition: 'background-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)'
-};
+}
 
 const contentStyle: CSSProperties = {
-  textAlign: 'center',
   color: 'black',
   backgroundColor: 'transparent',
   height: '100%',
   padding: '24px',
   userSelect: 'none'
-};
+}
 
 const siderStyle: CSSProperties = {
   color: '#ccc',
@@ -69,17 +68,17 @@ const siderStyle: CSSProperties = {
   paddingInline: '8px',
   paddingBlock: 0,
   borderInlineEnd: '1px solid rgba(5, 5, 5, 0.06)',
-  marginInlineEnd: '-1px',
-};
+  marginInlineEnd: '-1px'
+}
 
 const footerStyle: CSSProperties = {
   textAlign: 'center',
   color: 'black',
   backgroundColor: 'transparent',
   userSelect: 'none'
-};
+}
 
-const selectedKeys = ref<string[]>([]);
+const selectedKeys = ref<string[]>([])
 const collapsed = ref(false)
 const viewportWidth = ref(window.innerWidth || document.documentElement.clientWidth)
 const isViewport = computed(() => {
@@ -97,14 +96,23 @@ onMounted(() => {
 <template>
   <a-layout>
     <slot name="noticeBar">
-      <a-alert message="公告: 超市狂欢季，折扣来袭！买得越多，省得越多！一站式购物，全场满减，品质生活，从此开始！别错过，速来抢购，让优惠装满你的购物车" banner closable type="info">
+      <a-alert
+        message="公告: 超市狂欢季，折扣来袭！买得越多，省得越多！一站式购物，全场满减，品质生活，从此开始！别错过，速来抢购，让优惠装满你的购物车"
+        banner
+        closable
+        type="info"
+      >
       </a-alert>
     </slot>
     <a-layout-header :style="headerStyle">
       <div class="layout-header">
         <a class="layout-header-left" v-if="isViewport">
-          <slot name="logo" class="layout-header-left-logo"><img width="auto" height="22" :src="props.logo" alt="logo"></slot>
-          <h1 class="layout-header-left-title"><slot name="title">{{ props.title }}</slot></h1>
+          <slot name="logo" class="layout-header-left-logo"
+            ><img width="auto" height="22" :src="props.logo" alt="logo"
+          /></slot>
+          <h1 class="layout-header-left-title">
+            <slot name="title">{{ props.title }}</slot>
+          </h1>
         </a>
         <div class="layout-header-left" v-else>
           <MenuOutlined @click="drawerOpen = !drawerOpen" />
@@ -152,9 +160,15 @@ onMounted(() => {
                 <span>dashboard</span>
               </span>
             </template>
-            <a-menu-item key="analysis" @click="() => $router.push('/dashboard/analysis')">analysis</a-menu-item>
-            <a-menu-item key="monitor" @click="() => $router.push('/dashboard/monitor')">monitor</a-menu-item>
-            <a-menu-item key="workplace" @click="() => $router.push('/dashboard/workplace')">workplace</a-menu-item>
+            <a-menu-item key="analysis" @click="() => $router.push('/dashboard/analysis')"
+              >analysis</a-menu-item
+            >
+            <a-menu-item key="monitor" @click="() => $router.push('/dashboard/monitor')"
+              >monitor</a-menu-item
+            >
+            <a-menu-item key="workplace" @click="() => $router.push('/dashboard/workplace')"
+              >workplace</a-menu-item
+            >
           </a-sub-menu>
           <a-menu-item key="2">
             <desktop-outlined />
@@ -194,7 +208,7 @@ onMounted(() => {
             <LeftOutlined />
           </template>
         </div>
-        </a-layout-sider>
+      </a-layout-sider>
       <a-layout>
         <a-layout-content :style="contentStyle">
           <slot name="breadcrumb">
@@ -213,7 +227,10 @@ onMounted(() => {
       </a-layout>
     </a-layout>
   </a-layout>
-  <img src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr" style="position: absolute; bottom: 0px; left: 0px; width: 331px;">
+  <img
+    src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr"
+    style="position: absolute; bottom: 0px; left: 0px; width: 331px"
+  />
   <a-drawer v-model:open="drawerOpen" :closable="false" placement="left" width="256">
     <div class="layout-sider-collapsed-button" @click="drawerOpen = !drawerOpen">
       <LeftOutlined />

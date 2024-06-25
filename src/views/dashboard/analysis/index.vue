@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-  defineOptions({ name: 'Analytics' })
-  const activeKey = ref('1');
+defineOptions({ name: 'Analytics' })
+const activeKey = ref('1')
 </script>
 
 <template>
@@ -24,7 +24,12 @@ import { ref } from 'vue';
         </a-card>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
-        <a-card :loading="loading" :bordered="false" title="运营活动效果" :style="{ height: '100%' }">
+        <a-card
+          :loading="loading"
+          :bordered="false"
+          title="运营活动效果"
+          :style="{ height: '100%' }"
+        >
           content
         </a-card>
       </a-col>
@@ -43,9 +48,7 @@ import { ref } from 'vue';
         <a-card title="销售额类别占比">content</a-card>
       </a-col>
     </a-row>
-    <a-card>
-      content
-    </a-card>
+    <a-card> content </a-card>
   </a-flex>
 </template>
 
