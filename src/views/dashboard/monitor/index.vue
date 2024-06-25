@@ -7,13 +7,13 @@ defineOptions({ name: 'Monitor' })
     <a-row :gutter="12">
       <a-col :span="12">
         <a-card title="活动实时交易情况">
-          content<br>
-          content<br>
-          content<br>
-          content<br>
-          content<br>
-          content<br>
-          content<br>
+          content<br />
+          content<br />
+          content<br />
+          content<br />
+          content<br />
+          content<br />
+          content<br />
           content
         </a-card>
       </a-col>
