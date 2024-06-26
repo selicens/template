@@ -85,7 +85,6 @@ const isViewport = computed(() => {
   return viewportWidth.value < 768 ? false : true
 })
 const drawerOpen = ref(false)
-const formRef = ref()
 onMounted(() => {
   window.addEventListener('resize', () => {
     viewportWidth.value = window.innerWidth || document.documentElement.clientWidth
