@@ -8,7 +8,6 @@ import type {
 } from 'axios';
 
 const instance: AxiosInstance = axios.create({
-  baseURL: 'https://api.github.com',
   timeout: 1000,
 });
 instance.interceptors.request.use(

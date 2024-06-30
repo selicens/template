@@ -1,8 +1,14 @@
 <script setup>
 import { ref } from 'vue'
+import { getData } from '@/services/index'
 
 defineOptions({ name: 'Analytics' })
 const activeKey = ref('1')
+const data = async () => {
+  const res = await getData()
+  console.log(res)
+}
+data()
 </script>
 
 <template>
