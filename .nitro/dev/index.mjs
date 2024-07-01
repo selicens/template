@@ -635,9 +635,11 @@ function renderHTMLError(error) {
 `;
 }
 
+const _lazy_uZTldy = () => Promise.resolve().then(function () { return analysis$1; });
 const _lazy_eHUFHl = () => Promise.resolve().then(function () { return index$1; });
 
 const handlers = [
+  { route: '/dashboard/analysis', handler: _lazy_uZTldy, lazy: true, middleware: false, method: undefined },
   { route: '/', handler: _lazy_eHUFHl, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -859,8 +861,17 @@ parentPort.on("message", async (msg) => {
   }
 });
 
-const index = eventHandler((event) => {
-  return "Start by editing <code>server/routes/index.ts</code>.";
+const analysis = eventHandler(() => {
+  return "analysis";
+});
+
+const analysis$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: analysis
+});
+
+const index = eventHandler(() => {
+  return "Welcome to template admin";
 });
 
 const index$1 = /*#__PURE__*/Object.freeze({

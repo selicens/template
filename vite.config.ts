@@ -6,6 +6,9 @@ import autoImport from 'unplugin-auto-import/vite'
 import components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers"
 
+import vueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -13,8 +16,8 @@ export default defineConfig({
     autoImport({
       imports: [
         'vue',
-        'vue-router',
         'pinia',
+        VueRouterAutoImports
       ],
       dts: true,
     }),
@@ -26,6 +29,12 @@ export default defineConfig({
           importStyle: false,
         })
       ]
+    }),
+    vueRouter({
+      routesFolder: [{
+        src: 'src/views'
+      }],
+      dts: true
     })
   ],
   resolve: {
@@ -35,10 +44,10 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api/': {
+      '/mock/': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/mock/, '')
       }
     }
   }

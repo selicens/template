@@ -10,6 +10,7 @@ import type {
 const instance: AxiosInstance = axios.create({
   timeout: 1000,
 });
+
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     return config;

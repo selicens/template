@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BasicLayout from './components/layouts/BasicLayout.vue'
+import Index from './views/index.vue'
 import { onMounted } from 'vue'
 onMounted(() => {
   const loading = document.querySelector('#loading-app')
@@ -8,7 +9,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <BasicLayout> </BasicLayout>
+  <Index>
+    <BasicLayout> </BasicLayout>
+  </Index>
 </template>
 
 <style scoped></style>

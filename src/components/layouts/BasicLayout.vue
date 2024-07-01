@@ -90,6 +90,8 @@ onMounted(() => {
     viewportWidth.value = window.innerWidth || document.documentElement.clientWidth
   })
 })
+const route = useRoute()
+const routes = route.path.split('/').filter(Boolean)
 </script>
 
 <template>
@@ -212,8 +214,8 @@ onMounted(() => {
         <a-layout-content :style="contentStyle">
           <slot name="breadcrumb">
             <a-breadcrumb style="margin: 16px 0">
-              <a-breadcrumb-item>User</a-breadcrumb-item>
-              <a-breadcrumb-item>Bill</a-breadcrumb-item>
+              <a-breadcrumb-item>{{ route.path.split('/').filter(Boolean)[0] }}</a-breadcrumb-item>
+              <a-breadcrumb-item>{{ route.path.split('/').filter(Boolean)[1] }}</a-breadcrumb-item>
             </a-breadcrumb>
           </slot>
           <slot name="content">
