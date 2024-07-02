@@ -1,10 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { getData } from '@/services/index'
 import ChartCard from './components/chart-card.vue'
 import Trend from './components/trend.vue'
 import { InfoCircleOutlined } from "@ant-design/icons-vue";
-import { TinyArea, TinyColumn, Progress } from '@antv/g2plot';
+import { TinyArea, TinyColumn, Progress, Column } from '@antv/g2plot';
 
 defineOptions({ name: 'Analytics' })
 const activeKey = ref('1')
@@ -21,6 +21,96 @@ const tinyColumn = shallowRef()
 const progress = shallowRef()
 
 const visitData = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5]
+const salesData = [
+  {
+    x: '1月',
+    y: 809,
+  },
+  {
+    x: '2月',
+    y: 766,
+  },
+  {
+    x: '3月',
+    y: 585,
+  },
+  {
+    x: '4月',
+    y: 763,
+  },
+  {
+    x: '5月',
+    y: 853,
+  },
+  {
+    x: '6月',
+    y: 898,
+  },
+  {
+    x: '7月',
+    y: 1096,
+  },
+  {
+    x: '8月',
+    y: 452,
+  },
+  {
+    x: '9月',
+    y: 244,
+  },
+  {
+    x: '10月',
+    y: 838,
+  },
+  {
+    x: '11月',
+    y: 673,
+  },
+  {
+    x: '12月',
+    y: 431,
+  },
+]
+const rankingListData: { title: string, total: number }[] = []
+for (let i = 0; i < 7; i += 1) {
+  rankingListData.push({
+    title: `工专路 ${i} 号店`,
+    total: 323234,
+  })
+}
+
+const numeral = (num) => {
+  return num.toLocaleString()
+}
+
+const column = ref()
+const columnContainer1 = shallowRef()
+const columnContainer2 = shallowRef()
+const changesTab = (activeKey) => {
+  console.log(activeKey)
+  if (activeKey === '2') {
+    setTimeout(() => {
+      new Column(columnContainer2.value, {
+        data: salesData,
+        xField: 'x',
+        yField: 'y',
+        height: 300,
+        xAxis: {
+          label: {
+            autoHide: true,
+            autoRotate: false,
+          },
+        },
+        meta: {
+          y: {
+            alias: '销售量',
+          },
+        },
+      }).render()
+      renderOnce = true
+    })
+  }
+}
 onMounted(() => {
   tinyArea.value = new TinyArea(tinyAreaContainer.value, {
     height: 46,
@@ -50,6 +140,25 @@ onMounted(() => {
     color: ['#13C2C2', '#E9EEF4'],
   })
   progress.value?.render()
+
+  column.value = new Column(columnContainer1.value, {
+    data: salesData,
+    xField: 'x',
+    yField: 'y',
+    height: 300,
+    xAxis: {
+      label: {
+        autoHide: true,
+        autoRotate: false,
+      },
+    },
+    meta: {
+      y: {
+        alias: '销售量',
+      },
+    },
+  })
+  column.value?.render()
 })
 </script>
 
@@ -63,10 +172,10 @@ onMounted(() => {
               <InfoCircleOutlined />
             </a-tooltip>
           </template>
-          <template #total>￥ 12560</template>
+          <template #total>￥ {{ `${numeral(12560)}` }}</template>
           <Trend flag="up">周同比 12%</Trend>
           <Trend flag="down">日同比 11%</Trend>
-          <template #footer>日销售额 ￥12423</template>
+          <template #footer>日销售额 ￥{{ `${numeral(12423)}` }}</template>
         </ChartCard>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
@@ -78,7 +187,7 @@ onMounted(() => {
           </template>
           <template #total>8846</template>
           <div ref="tinyAreaContainer"></div>
-          <template #footer>日访问量 1234</template>
+          <template #footer>日访问量 {{ `${numeral(1234)}` }}</template>
         </ChartCard>
       </a-col>
       <a-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
@@ -110,9 +219,70 @@ onMounted(() => {
       </a-col>
     </a-row>
     <a-card width="100%">
-      <a-tabs v-model:activeKey="activeKey">
-        <a-tab-pane key="1" tab="销售额">销售额</a-tab-pane>
-        <a-tab-pane key="2" tab="访问量">访问量</a-tab-pane>
+      <a-tabs v-model:activeKey="activeKey" @chang="changesTab">
+        <a-tab-pane key="1" tab="销售额">
+          <a-row>
+            <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
+              <div ref="columnContainer1"></div>
+            </a-col>
+            <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
+              <div>
+                <h4>门店销售额排名</h4>
+                <ul>
+                  <li v-for="(item, index) in rankingListData" :key="index">
+                    <span
+                      :class="`rankingItemNumber ${index < 3 ? 'active' : ''}`"
+                    >
+                      {{ index + 1 }}
+                    </span>
+                    <span class="rankingItemTitle" :title="item.title">
+                      {{ item.title }}
+                    </span>
+                    <span class="rankingItemValue">
+                      {{ numeral(item.total) }}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </a-col>
+          </a-row>
+        </a-tab-pane>
+        <a-tab-pane key="2" tab="访问量">
+          <a-row>
+            <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
+              <div ref="columnContainer2"></div>
+            </a-col>
+            <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
+              <div>
+                <h4>门店销售额排名</h4>
+                <ul>
+                  <li v-for="(item, index) in rankingListData" :key="index">
+                    <span
+                      :class="`rankingItemNumber ${index < 3 ? 'active' : ''}`"
+                    >
+                      {{ index + 1 }}
+                    </span>
+                    <span class="rankingItemTitle" :title="item.title">
+                      {{ item.title }}
+                    </span>
+                    <span class="rankingItemValue">
+                      {{ numeral(item.total) }}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </a-col>
+          </a-row>
+        </a-tab-pane>
+        <template #rightExtra>
+          <div>
+            <a href="#">今日</a>
+            <a href="#">本周</a>
+            <a href="#">本月</a>
+            <a href="#">本年</a>
+          </div>
+          <a-range-picker></a-range-picker>
+        </template>
       </a-tabs>
     </a-card>
     <a-row :gutter="16">

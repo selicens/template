@@ -91,7 +91,6 @@ onMounted(() => {
   })
 })
 const route = useRoute()
-const routes = route.path.split('/').filter(Boolean)
 </script>
 
 <template>
