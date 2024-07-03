@@ -86,9 +86,10 @@ const numeral = (num) => {
 const column = ref()
 const columnContainer1 = shallowRef()
 const columnContainer2 = shallowRef()
+let renderOnce = false
 const changesTab = (activeKey) => {
   console.log(activeKey)
-  if (activeKey === '2') {
+  if (activeKey === '2' && !renderOnce) {
     setTimeout(() => {
       new Column(columnContainer2.value, {
         data: salesData,
@@ -160,6 +161,19 @@ onMounted(() => {
   })
   column.value?.render()
 })
+onBeforeUnmount(() => {
+  tinyArea.value?.destroy()
+  tinyArea.value = undefined
+
+  tinyColumn.value?.destroy()
+  tinyColumn.value = undefined
+
+  progress.value?.destroy()
+  progress.value = undefined
+
+  column.value?.destroy()
+  column.value = undefined
+})
 </script>
 
 <template>
@@ -219,16 +233,16 @@ onMounted(() => {
       </a-col>
     </a-row>
     <a-card width="100%">
-      <a-tabs v-model:activeKey="activeKey" @chang="changesTab">
+      <a-tabs v-model:activeKey="activeKey" @change="changesTab" size="large" class="salesCard">
         <a-tab-pane key="1" tab="销售额">
           <a-row>
             <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
-              <div ref="columnContainer1"></div>
+              <div ref="columnContainer1" class="salesBar"></div>
             </a-col>
             <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
-              <div>
-                <h4>门店销售额排名</h4>
-                <ul>
+              <div class="salesRank">
+                <h4 class="rankingTitle">门店销售额排名</h4>
+                <ul class="rankingList">
                   <li v-for="(item, index) in rankingListData" :key="index">
                     <span
                       :class="`rankingItemNumber ${index < 3 ? 'active' : ''}`"
@@ -275,13 +289,15 @@ onMounted(() => {
           </a-row>
         </a-tab-pane>
         <template #rightExtra>
-          <div>
-            <a href="#">今日</a>
-            <a href="#">本周</a>
-            <a href="#">本月</a>
-            <a href="#">本年</a>
+          <div style="display: flex;" class="salesExtraWrap">
+            <div class="salesExtra">
+              <a href="#">今日</a>
+              <a href="#">本周</a>
+              <a href="#">本月</a>
+              <a href="#">本年</a>
+            </div>
+            <a-range-picker></a-range-picker>
           </div>
-          <a-range-picker></a-range-picker>
         </template>
       </a-tabs>
     </a-card>
@@ -297,4 +313,67 @@ onMounted(() => {
   </a-flex>
 </template>
 
-<style scoped></style>
+<style scoped>
+.salesCard {
+  .salesBar {
+    padding: 0 0 32px 32px;
+  }
+  .salesRank {
+    padding: 0 32px 32px 72px;
+  }
+  :deep(.ant-tabs-nav-wrap) {
+    padding-left: 16px;
+    .ant-tabs-tab {
+      padding-top: 16px;
+      padding-bottom: 14px;
+      line-height: 24px;
+    }
+  }
+  :deep(.ant-tabs-bar) {
+    padding-left: 16px;
+    .ant-tabs-tab {
+      padding-top: 16px;
+      padding-bottom: 14px;
+      line-height: 24px;
+    }
+  }
+  :deep(.ant-tabs-extra-content) {
+    padding-right: 24px;
+    line-height: 55px;
+  }
+  :deep(.ant-card-head) {
+    position: relative;
+  }
+  :deep(.ant-card-head-title) {
+    align-items: normal;
+  }
+}
+.salesExtra {
+  display: inline-block;
+  margin-right: 24px;
+  a {
+    margin-left: 24px;
+    color: rgba(0, 0, 0, 0.88);
+    &:hover {
+      color: #1890ff;
+    }
+  }
+}
+
+@media screen and(max-width: 992px) {
+  .salesExtra {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* padding: 16px; */
+}
+@media screen and (max-width: 576px) {
+  :deep(.ant-tabs-content) {
+    padding-top: '30px';
+  }
+  .salesExtraWrap {
+    display: none;
+  }
+}
+</style>
