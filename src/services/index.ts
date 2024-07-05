@@ -1,5 +1,5 @@
-import instance from "./request";
+import instance from './request'
 
 export const getData = () => {
-  return instance.get("/mock/dashboard/analysis");
-};
+  return instance.get('/mock/dashboard/analysis')
+}

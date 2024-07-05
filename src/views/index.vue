@@ -1,5 +1,5 @@
 <script setup>
-  defineOptions({ name: 'Index' })
+defineOptions({ name: 'Index' })
 </script>
 
 <template>

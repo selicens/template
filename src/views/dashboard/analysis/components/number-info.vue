@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons-vue'
 defineOptions({
-  name: 'NumberInfo',
+  name: 'NumberInfo'
 })
 defineProps({
   gap: {
-    type: Number,
+    type: Number
   },
   subTotal: {
-    type: Number,
+    type: Number
   },
   total: {
-    type: [Number, String],
+    type: [Number, String]
   },
   status: {
-    type: String,
+    type: String
   },
   title: {
-    type: String,
-  },
+    type: String
+  }
 })
 </script>
 

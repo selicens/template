@@ -1,32 +1,32 @@
-import axios from 'axios';
+import axios from 'axios'
 import type {
   AxiosError,
   AxiosInstance,
   AxiosRequestHeaders,
   AxiosResponse,
   InternalAxiosRequestConfig
-} from 'axios';
+} from 'axios'
 
 const instance: AxiosInstance = axios.create({
-  timeout: 1000,
-});
+  timeout: 1000
+})
 
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    return config;
+    return config
   },
   (error: AxiosError) => {
-    return Promise.reject(error);
-  },
-);
+    return Promise.reject(error)
+  }
+)
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    return response;
+    return response
   },
   (error: AxiosError) => {
-    return Promise.reject(error);
-  },
-);
+    return Promise.reject(error)
+  }
+)
 
-export default instance;
+export default instance
