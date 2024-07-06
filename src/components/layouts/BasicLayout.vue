@@ -226,11 +226,13 @@ const route = useRoute()
         </a-layout-footer>
       </a-layout>
     </a-layout>
+    <div class="layout-bg">
+          <img
+            src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr"
+            style="position: fixed; bottom: 0px; left: 0px; width: 331px"
+          />
+        </div>
   </a-layout>
-  <img
-    src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr"
-    style="position: absolute; bottom: 0px; left: 0px; width: 331px"
-  />
   <a-drawer v-model:open="drawerOpen" :closable="false" placement="left" width="256">
     <div class="layout-sider-collapsed-button" @click="drawerOpen = !drawerOpen">
       <LeftOutlined />

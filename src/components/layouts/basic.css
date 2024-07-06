@@ -89,6 +89,18 @@
   animation: scroll 14s linear infinite;
 }
 
+.ant-layout .layout-bg {
+  pointer-events: none;
+  /* position: fixed; */
+  overflow: hidden;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(#ffffff, #f5f5f5 28%);
+}
+
 @keyframes scroll {
   0% {
     transform: translateX(100%);
