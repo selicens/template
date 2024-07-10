@@ -8,6 +8,7 @@ import { AntDesignVueResolver } from "unplugin-vue-components/resolvers"
 
 import vueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,7 +36,8 @@ export default defineConfig({
         src: 'src/views'
       }],
       dts: true
-    })
+    }),
+    vueDevTools()
   ],
   resolve: {
     alias: {

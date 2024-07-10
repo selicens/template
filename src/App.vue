@@ -4,13 +4,14 @@ import Index from './views/index.vue'
 import { onMounted } from 'vue'
 onMounted(() => {
   const loading = document.querySelector('#loading-app')
-  document.body.removeChild(loading)
+  document.body.removeChild(loading!)
 })
 </script>
 
 <template>
   <Index>
-    <BasicLayout> </BasicLayout>
+    <BasicLayout>
+    </BasicLayout>
   </Index>
 </template>
 

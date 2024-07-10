@@ -107,9 +107,9 @@ const route = useRoute()
     <a-layout-header :style="headerStyle">
       <div class="layout-header">
         <a class="layout-header-left" v-if="isViewport">
-          <slot name="logo" class="layout-header-left-logo"
-            ><img width="auto" height="22" :src="props.logo" alt="logo"
-          /></slot>
+          <slot name="logo" class="layout-header-left-logo">
+            <img width="auto" height="22" :src="props.logo" alt="logo"/>
+          </slot>
           <h1 class="layout-header-left-title">
             <slot name="title">{{ props.title }}</slot>
           </h1>
