@@ -5,6 +5,12 @@ import ChartCard from './chart-card.vue'
 import Trend from './trend/trend.vue'
 
 defineOptions({ name: 'IntroduceRow' })
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const numeral = (num: number) => {
   return num.toLocaleString()
@@ -65,7 +71,7 @@ onBeforeUnmount(() => {
 <template>
   <a-row :gutter="16">
     <a-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
-      <ChartCard title="总销售额" :contentHeight="46">
+      <ChartCard title="总销售额" :contentHeight="46" :loading="loading">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />
@@ -78,7 +84,7 @@ onBeforeUnmount(() => {
       </ChartCard>
     </a-col>
     <a-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
-      <ChartCard title="访问量" :contentHeight="46">
+      <ChartCard title="访问量" :contentHeight="46" :loading="loading">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />
@@ -90,7 +96,7 @@ onBeforeUnmount(() => {
       </ChartCard>
     </a-col>
     <a-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
-      <ChartCard title="支付笔数" :contentHeight="46">
+      <ChartCard title="支付笔数" :contentHeight="46" :loading="loading">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />
@@ -102,7 +108,7 @@ onBeforeUnmount(() => {
       </ChartCard>
     </a-col>
     <a-col :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
-      <ChartCard title="运营活动效果" :contentHeight="46">
+      <ChartCard title="运营活动效果" :contentHeight="46" :loading="loading">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />

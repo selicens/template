@@ -26,6 +26,7 @@ declare module 'vue-router/auto-routes' {
     '/dashboard/analysis/components/introduce-row': RouteRecordInfo<'/dashboard/analysis/components/introduce-row', '/dashboard/analysis/components/introduce-row', Record<never, never>, Record<never, never>>,
     '/dashboard/analysis/components/numberInfo/number-info': RouteRecordInfo<'/dashboard/analysis/components/numberInfo/number-info', '/dashboard/analysis/components/numberInfo/number-info', Record<never, never>, Record<never, never>>,
     '/dashboard/analysis/components/offline-data': RouteRecordInfo<'/dashboard/analysis/components/offline-data', '/dashboard/analysis/components/offline-data', Record<never, never>, Record<never, never>>,
+    '/dashboard/analysis/components/pageLoading/page-loading': RouteRecordInfo<'/dashboard/analysis/components/pageLoading/page-loading', '/dashboard/analysis/components/pageLoading/page-loading', Record<never, never>, Record<never, never>>,
     '/dashboard/analysis/components/proportion-sales': RouteRecordInfo<'/dashboard/analysis/components/proportion-sales', '/dashboard/analysis/components/proportion-sales', Record<never, never>, Record<never, never>>,
     '/dashboard/analysis/components/sales-card': RouteRecordInfo<'/dashboard/analysis/components/sales-card', '/dashboard/analysis/components/sales-card', Record<never, never>, Record<never, never>>,
     '/dashboard/analysis/components/top-search': RouteRecordInfo<'/dashboard/analysis/components/top-search', '/dashboard/analysis/components/top-search', Record<never, never>, Record<never, never>>,

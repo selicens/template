@@ -256,7 +256,7 @@ const offlineChartData = [
 </script>
 
 <template>
-  <a-card class="offlineCard" :bordered="false" :style="{ marginTop: '32px' }">
+  <a-card class="offlineCard" :bordered="false">
     <a-tabs v-model:active-key="offlineActiveKey" @change="handleTabChange">
       <a-tab-pane v-for="(item, index) in offlineData" :key="index">
         <template #tab>

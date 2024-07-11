@@ -5,6 +5,7 @@ import SalesCard from './components/sales-card.vue'
 import TopSearch from './components/top-search.vue'
 import ProportionSales from './components/proportion-sales.vue'
 import OfflineData from './components/offline-data.vue'
+import PageLoading from './components/pageLoading/page-loading.vue'
 
 defineOptions({ name: 'Analytics' })
 
@@ -13,33 +14,49 @@ defineOptions({ name: 'Analytics' })
 //   console.log(res)
 // }
 // data()
+const loading = ref(true)
+onMounted(() => {
+  loading.value = !loading.value
+})
 </script>
 
 <template>
   <a-flex vertical gap="16">
-    <Suspense fallback="loading">
-      <IntroduceRow></IntroduceRow>
+    <Suspense>
+      <template #fallback>
+        <PageLoading />
+      </template>
+      <IntroduceRow :loading="loading" />
     </Suspense>
-    <Suspense fallback="loading">
-      <SalesCard></SalesCard>
+    <Suspense>
+      <template #fallback>
+        <PageLoading />
+      </template>
+      <SalesCard :loading="loading" />
     </Suspense>
-    <a-row :gutter="16">
+    <a-row :gutter="[16, 0]">
       <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-        <Suspense fallback="loading">
-          <TopSearch />
+        <Suspense>
+          <template #fallback>
+            <PageLoading />
+          </template>
+          <TopSearch :loading="loading" />
         </Suspense>
       </a-col>
       <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-        <Suspense fallback="loading">
-          <ProportionSales />
+        <Suspense>
+          <template #fallback>
+            <PageLoading />
+          </template>
+          <ProportionSales :loading="loading" />
         </Suspense>
       </a-col>
     </a-row>
     <Suspense>
-      <OfflineData />
+      <template #fallback>
+        <PageLoading />
+      </template>
+      <OfflineData :loading="loading" />
     </Suspense>
   </a-flex>
 </template>
-
-<style scoped>
-</style>

@@ -125,16 +125,14 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <a-card title="销售额类别占比" class="salesCard">
+  <a-card title="销售额类别占比" class="salesCard" style="height: 100%">
     <template #extra>
-      <div class="salesCardExtra">
-        <div class="salesTypeRadio">
-          <a-radio-group :value="salesType" @change="handleChangeSalesType">
-            <a-radio-button value="all"> 全部渠道 </a-radio-button>
-            <a-radio-button value="online"> 线上 </a-radio-button>
-            <a-radio-button value="stores"> 门店 </a-radio-button>
-          </a-radio-group>
-        </div>
+      <a-flex :gap="8" align="center">
+        <a-radio-group :value="salesType" @change="handleChangeSalesType">
+          <a-radio-button value="all"> 全部渠道 </a-radio-button>
+          <a-radio-button value="online"> 线上 </a-radio-button>
+          <a-radio-button value="stores"> 门店 </a-radio-button>
+        </a-radio-group>
         <a-dropdown placement="bottomRight">
           <template #overlay>
             <a-menu>
@@ -144,7 +142,7 @@ onBeforeUnmount(() => {
           </template>
           <EllipsisOutlined />
         </a-dropdown>
-      </div>
+      </a-flex>
     </template>
     <div>
       <a-typography-text>销售额</a-typography-text>

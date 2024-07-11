@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { Column } from '@antv/g2plot'
 defineOptions({ name: 'SalesCard' })
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false
+  }
+})
 const activeKey = ref('1')
 const columnContainer1 = shallowRef()
 const columnContainer2 = shallowRef()
@@ -121,7 +127,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <a-card width="100%">
+  <a-card width="100%" :loading="loading">
     <a-tabs v-model:activeKey="activeKey" @change="changesTab" size="large" class="salesCard">
       <a-tab-pane key="1" tab="销售额">
         <a-row>

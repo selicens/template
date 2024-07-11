@@ -90,7 +90,6 @@ onMounted(() => {
     viewportWidth.value = window.innerWidth || document.documentElement.clientWidth
   })
 })
-const route = useRoute()
 </script>
 
 <template>
@@ -160,15 +159,15 @@ const route = useRoute()
                 <span>dashboard</span>
               </span>
             </template>
-            <a-menu-item key="analysis" @click="() => $router.push('/dashboard/analysis')"
-              >analysis</a-menu-item
-            >
-            <a-menu-item key="monitor" @click="() => $router.push('/dashboard/monitor')"
-              >monitor</a-menu-item
-            >
-            <a-menu-item key="workplace" @click="() => $router.push('/dashboard/workplace')"
-              >workplace</a-menu-item
-            >
+            <a-menu-item key="analysis" @click="() => $router.push('/dashboard/analysis')">
+              analysis
+            </a-menu-item>
+            <a-menu-item key="monitor" @click="() => $router.push('/dashboard/monitor')">
+              monitor
+            </a-menu-item>
+            <a-menu-item key="workplace" @click="() => $router.push('/dashboard/workplace')">
+              workplace
+            </a-menu-item>
           </a-sub-menu>
           <a-menu-item key="2">
             <desktop-outlined />
@@ -212,10 +211,6 @@ const route = useRoute()
       <a-layout>
         <a-layout-content :style="contentStyle">
           <slot name="breadcrumb">
-            <a-breadcrumb style="margin: 16px 0">
-              <a-breadcrumb-item>{{ route.path.split('/').filter(Boolean)[0] }}</a-breadcrumb-item>
-              <a-breadcrumb-item>{{ route.path.split('/').filter(Boolean)[1] }}</a-breadcrumb-item>
-            </a-breadcrumb>
           </slot>
           <slot name="content">
             <router-view />
@@ -227,11 +222,11 @@ const route = useRoute()
       </a-layout>
     </a-layout>
     <div class="layout-bg">
-          <img
-            src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr"
-            style="position: fixed; bottom: 0px; left: 0px; width: 331px"
-          />
-        </div>
+      <img
+        src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr"
+        style="position: fixed; bottom: 0px; left: 0px; width: 331px"
+      />
+    </div>
   </a-layout>
   <a-drawer v-model:open="drawerOpen" :closable="false" placement="left" width="256">
     <div class="layout-sider-collapsed-button" @click="drawerOpen = !drawerOpen">

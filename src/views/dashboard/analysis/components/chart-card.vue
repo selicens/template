@@ -23,7 +23,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <a-card :bind="props" :body-style="{ padding: '20px 24px 8px 24px' }">
+  <a-card v-bind="props" :body-style="{ padding: '20px 24px 8px 24px' }">
     <div class="chartCard">
       <div class="chartTop">
         <div class="metaWrap">

@@ -405,7 +405,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <a-card title="线上热门搜索">
+  <a-card title="线上热门搜索" style="height: 100%">
     <a-row :gutter="68">
       <a-col :sm="12" :xs="24" :style="{ marginBottom: '24px' }">
         <NumberInfo>
