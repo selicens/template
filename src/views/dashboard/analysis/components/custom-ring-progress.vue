@@ -2,13 +2,13 @@
 import { RingProgress } from '@antv/g2plot'
 
 defineOptions({
-  name: 'CustomRingProgress',
+  name: 'CustomRingProgress'
 })
 const props = defineProps({
   percent: {
     type: Number,
-    default: 0,
-  },
+    default: 0
+  }
 })
 const container = ref()
 
@@ -21,8 +21,8 @@ onMounted(() => {
     innerRadius: 0.7,
     color: ['#fab120', '#E8EDF3'],
     statistic: {
-      content: false,
-    },
+      content: false
+    }
   }).render()
 })
 </script>

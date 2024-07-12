@@ -307,7 +307,8 @@ onBeforeUnmount(() => {
   .salesExtraWrap {
     display: none;
   }
-}.rankingList {
+}
+.rankingList {
   margin: 25px 0 0;
   padding: 0;
   list-style: none;

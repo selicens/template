@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { InfoCircleOutlined } from '@ant-design/icons-vue'
 import { TinyArea } from '@antv/g2plot'
-import Trend from './trend/trend.vue';
-import NumberInfo from './numberInfo/number-info.vue';
+import Trend from './trend/trend.vue'
+import NumberInfo from './numberInfo/number-info.vue'
 
 defineOptions({ name: 'TopSearch' })
 const tinyAreaContainer1 = ref()

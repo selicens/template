@@ -10,8 +10,7 @@ onMounted(() => {
 
 <template>
   <Index>
-    <BasicLayout>
-    </BasicLayout>
+    <BasicLayout> </BasicLayout>
   </Index>
 </template>
 

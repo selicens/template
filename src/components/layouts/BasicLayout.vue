@@ -107,7 +107,7 @@ onMounted(() => {
       <div class="layout-header">
         <a class="layout-header-left" v-if="isViewport">
           <slot name="logo" class="layout-header-left-logo">
-            <img width="auto" height="22" :src="props.logo" alt="logo"/>
+            <img width="auto" height="22" :src="props.logo" alt="logo" />
           </slot>
           <h1 class="layout-header-left-title">
             <slot name="title">{{ props.title }}</slot>
@@ -210,8 +210,7 @@ onMounted(() => {
       </a-layout-sider>
       <a-layout>
         <a-layout-content :style="contentStyle">
-          <slot name="breadcrumb">
-          </slot>
+          <slot name="breadcrumb"> </slot>
           <slot name="content">
             <router-view />
           </slot>
