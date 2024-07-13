@@ -15,7 +15,7 @@ defineOptions({ name: 'Analytics' })
 // }
 // data()
 const loading = ref(true)
-onMounted(() => {
+onBeforeMount(() => {
   loading.value = !loading.value
 })
 </script>

@@ -1,0 +1,18 @@
+{
+  "cSpell.ignoreWords": [
+    "nuxt",
+    "qrcode",
+    "axios",
+    "stylelint",
+    "pinia",
+    "vite",
+    "unplugin",
+    "sider",
+    "selicens",
+    "antv",
+    "changelogen",
+    "commitlint",
+    "nitropack",
+    "rushstack"
+  ],
+}
