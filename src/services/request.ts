@@ -2,7 +2,7 @@ import axios from 'axios'
 import type {
   AxiosError,
   AxiosInstance,
-  AxiosRequestHeaders,
+  // AxiosRequestHeaders,
   AxiosResponse,
   InternalAxiosRequestConfig
 } from 'axios'
