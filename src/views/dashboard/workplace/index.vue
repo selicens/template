@@ -1,20 +1,8 @@
 <script setup lang="ts">
 import { Radar } from '@antv/g2plot'
+import { PlusOutlined } from '@ant-design/icons-vue'
 defineOptions({ name: 'Workplace' })
-const data = [
-  {
-    title: 'Ant Design Title 1'
-  },
-  {
-    title: 'Ant Design Title 2'
-  },
-  {
-    title: 'Ant Design Title 3'
-  },
-  {
-    title: 'Ant Design Title 4'
-  }
-]
+
 const currentUser = {
   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
   name: '吴彦祖',
@@ -297,73 +285,370 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <a-row :gutter="10">
-    <a-col :span="18">
-      <a-flex gap="large">
-        <div class="avatar">
-          <a-avatar size="large" :src="currentUser.avatar" />
-        </div>
-        <div class="content">
-          <div class="contentTitle">
-            早安，
-            {{ currentUser.name }}
-            ，祝你开心每一天！
+  <a-flex vertical gap="24">
+    <a-row :gutter="24">
+      <a-col :span="18">
+        <a-flex gap="large">
+          <div class="avatar">
+            <a-avatar size="large" :src="currentUser.avatar" />
           </div>
-          <div>
-            {{ currentUser.title }} |{{ currentUser.group }}
+          <div class="content">
+            <div class="contentTitle">
+              早安，
+              {{ currentUser.name }}
+              ，祝你开心每一天！
+            </div>
+            <div>
+              {{ currentUser.title }} | {{ currentUser.group }}
+            </div>
+          </div>
+        </a-flex>
+      </a-col>
+      <a-col :span="6">
+        <div class="extraContent">
+          <div class="statItem">
+            <a-statistic title="项目数" :value="56" />
+          </div>
+          <!-- <a-divider type="vertical" style="height: 80px; border-color: #7cb305"></a-divider> -->
+          <div class="statItem">
+            <a-statistic title="团队内排名" :value="8" suffix="/ 24" />
+          </div>
+          <!-- <a-divider type="vertical" style="height: 80px; border-color: #7cb305"></a-divider> -->
+          <div class="statItem">
+            <a-statistic title="项目访问" :value="2223" />
           </div>
         </div>
-      </a-flex>
-    </a-col>
-    <a-col :span="6">
-      <a-flex gap="large">
-        <a-statistic title="项目数" :value="56" />
-        <a-divider type="vertical" style="height: 80px; border-color: #7cb305"></a-divider>
-        <a-statistic title="团队内排名" :value="8" suffix="/ 24" />
-        <a-divider type="vertical" style="height: 80px; border-color: #7cb305"></a-divider>
-        <a-statistic title="项目访问" :value="2223" />
-      </a-flex>
-    </a-col>
-  </a-row>
-  <a-row :gutter="10">
-    <a-col :span="18">
-      <a-flex vertical gap="small">
-        <a-card title="Card Title">
-          <a-card-grid style="width: 33.33%; text-align: center">Content</a-card-grid>
-          <a-card-grid style="width: 33.33%; text-align: center">Content</a-card-grid>
-          <a-card-grid style="width: 33.33%; text-align: center">Content</a-card-grid>
-          <a-card-grid style="width: 33.33%; text-align: center">Content</a-card-grid>
-          <a-card-grid style="width: 33.33%; text-align: center">Content</a-card-grid>
-          <a-card-grid style="width: 33.33%; text-align: center">Content</a-card-grid>
-        </a-card>
-        <a-card title="动态">
-          <a-list item-layout="horizontal" :data-source="data">
-            <template #renderItem="{ item }">
-              <a-list-item>
-                <a-list-item-meta
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+      </a-col>
+    </a-row>
+    <a-row :gutter="24">
+      <a-col :xl="16" :lg="24" :md="24" :sm="24" :xs="24">
+        <a-flex vertical gap="24">
+          <a-card
+            class="projectList"
+            title="进行中的项目"
+            :bordered="false"
+            :loading="false"
+            :body-style="{ padding: 0 }"
+          >
+            <template #extra>
+              <router-link to="/">
+                全部项目
+              </router-link>
+            </template>
+            <a-card-grid v-for="item in projectNotice" :key="item.id" class="projectGrid">
+              <a-card :body-style="{ padding: 0 }" style="box-shadow: none" :bordered="false">
+                <a-card-meta
+                  :description="item.description"
+                  style="width: 100%"
                 >
                   <template #title>
-                    <a href="https://www.antdv.com/">{{ item.title }}</a>
+                    <div class="cardTitle">
+                      <a-avatar size="small" :src="item.logo" />
+                      <router-link :to="item.href">
+                        {{ item.title }}
+                      </router-link>
+                    </div>
                   </template>
-                  <template #avatar>
-                    <a-avatar src="https://joeschmoe.io/api/v1/random" />
-                  </template>
-                </a-list-item-meta>
-              </a-list-item>
-            </template>
-          </a-list>
-        </a-card>
-      </a-flex>
-    </a-col>
-    <a-col :span="6">
-      <a-flex vertical gap="small">
-        <a-card title="快速开始/便捷导航"> content </a-card>
-        <a-card title="XX指数"> content </a-card>
-        <a-card title="团队"> content </a-card>
-      </a-flex>
-    </a-col>
-  </a-row>
+                </a-card-meta>
+                <div class="projectItemContent">
+                  <router-link :to="item.memberLink">
+                    {{ item.member || '' }}
+                  </router-link>
+                  <span class="datetime" :title="item.updatedAt">
+                    {{ item.updatedAt }}
+                  </span>
+                </div>
+              </a-card>
+            </a-card-grid>
+          </a-card>
+          <a-card
+            :body-style="{ padding: 0 }"
+            :bordered="false"
+            class="activeCard"
+            title="动态"
+            :loading="false"
+          >
+            <a-list
+              :data-source="activities"
+              class="activitiesList"
+            >
+              <template #renderItem="{ item }">
+                <a-list-item :key="item.id">
+                  <a-list-item-meta>
+                    <template #title>
+                      <span>
+                        <a class="username">{{ item.user.name }}</a>&nbsp;
+                        <span class="event">
+                          <span>{{ item.template1 }}</span>&nbsp;
+                          <a href=""> {{ item?.group?.name }} </a>&nbsp;
+                          <span>{{ item.template2 }}</span>&nbsp;
+                          <a href=""> {{ item?.project?.name }} </a>
+                        </span>
+                      </span>
+                    </template>
+                    <template #avatar>
+                      <a-avatar :src="item.user.avatar" />
+                    </template>
+                    <template #description>
+                      <span class="datetime" :title="item.updatedAt">
+                        {{ item.updatedAt }}
+                      </span>
+                    </template>
+                  </a-list-item-meta>
+                </a-list-item>
+              </template>
+            </a-list>
+          </a-card>
+        </a-flex>
+      </a-col>
+      <a-col :xl="8" :lg="24" :md="24" :sm="24" :xs="24">
+        <a-flex vertical gap="24">
+          <a-card
+            title="快速开始 / 便捷导航"
+            :bordered="false"
+            :body-style="{ padding: 0 }"
+          >
+            <div style="padding: 20px 0 8px 24px;">
+              <a-button size="small" type="primary" ghost>
+                <PlusOutlined /> 添加
+              </a-button>
+            </div>
+          </a-card>
+          <a-card
+            :bordered="false"
+            title="XX 指数"
+          >
+            <div class="chart">
+              <div ref="radarContainer" />
+            </div>
+          </a-card>
+          <a-card
+            :body-style="{ paddingTop: '12px', paddingBottom: '12px' }"
+            :bordered="false"
+            title="团队"
+          >
+            <div class="members">
+              <a-row :gutter="48">
+                <a-col v-for="item in projectNotice" :key="`members-item-${item.id}`" :span="12">
+                  <router-link :to="item.href">
+                    <a-avatar :src="item.logo" size="small" />
+                    <span class="member">{{ item.member }}</span>
+                  </router-link>
+                </a-col>
+              </a-row>
+            </div>
+          </a-card>
+        </a-flex>
+      </a-col>
+    </a-row>
+  </a-flex>
 </template>
 
-<style scoped></style>
+<style scoped>
+.avatar {
+  flex: 0 1 72px;
+  & > span {
+    display: block;
+    width: 72px;
+    height: 72px;
+    border-radius: 72px;
+  }
+}
+.content {
+  position: relative;
+  top: 4px;
+  flex: 1 1 auto;
+  margin-left: 24px;
+  color: rgba(0, 0, 0, 0.88);
+  line-height: 22px;
+  .contentTitle {
+    margin-bottom: 12px;
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+.extraContent {
+  zoom: 1;
+  &::before,
+  &::after {
+    display: table;
+    content: ' ';
+  }
+  &::after {
+    clear: both;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+  }
+
+  float: right;
+  white-space: nowrap;
+  .statItem {
+    position: relative;
+    display: inline-block;
+    padding: 0 32px;
+    > p:first-child {
+      margin-bottom: 4px;
+      color: var(--pro-ant-color-text-tertiary);
+      font-size: 14px;
+      line-height: 22px;
+    }
+    > p {
+      margin: 0;
+      color:var(--pro-ant-color-text);
+      font-size: 30px;
+      line-height: 38px;
+      > span {
+        color: var(--pro-ant-color-text-tertiary);
+        font-size: 20px;
+      }
+    }
+    &::after {
+      position: absolute;
+      top: 8px;
+      right: 0;
+      width: 1px;
+      height: 40px;
+      background-color: rgba(5, 5, 5, 0.06);
+      content: '';
+    }
+    &:last-child {
+      padding-right: 0;
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+.projectList {
+  :deep(.ant-card-meta-description) {
+    height: 44px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.88);
+    line-height: 22px;
+  }
+  .cardTitle {
+    font-size: 0;
+    a {
+      display: inline-block;
+      height: 24px;
+      margin-left: 12px;
+      color: rgba(0, 0, 0, 0.88);
+      font-size: 14px;
+      line-height: 24px;
+      vertical-align: top;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+  .projectGrid {
+    width: 33.33%;
+  }
+  .projectItemContent {
+    display: flex;
+    height: 20px;
+    margin-top: 8px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    a {
+      display: inline-block;
+      flex: 1 1 0;
+      color: rgba(0, 0, 0, 0.88);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+    .datetime {
+      flex: 0 0 auto;
+      float: right;
+      color: rgba(0, 0, 0, 0.25);
+      margin-left: 10px;
+    }
+  }
+}
+
+.datetime {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.activitiesList {
+  /* padding: 0 24px 8px 24px; */
+  .username {
+    color: rgba(0, 0, 0, 0.88);
+  }
+  .event {
+    font-weight: normal;
+  }
+}
+
+.members {
+  a {
+    display: block;
+    height: 24px;
+    margin: 12px 0;
+    color: rgba(0, 0, 0, 0.88);
+    transition: all 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    .member {
+      margin-left: 12px;
+      font-size: 14px;
+      line-height: 24px;
+      vertical-align: top;
+    }
+    &:hover {
+      color: #1890ff;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+  .activeCard {
+    margin-bottom: 24px;
+  }
+  .members {
+    margin-bottom: 0;
+  }
+  .extraContent {
+    margin-left: -44px;
+    .statItem {
+      padding: 0 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .activeCard {
+    margin-bottom: 24px;
+  }
+  .members {
+    margin-bottom: 0;
+  }
+  .extraContent {
+    float: none;
+    margin-right: 0;
+    .statItem {
+      padding: 0 16px;
+      text-align: left;
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+</style>
