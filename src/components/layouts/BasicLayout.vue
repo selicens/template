@@ -48,7 +48,10 @@ const headerStyle: CSSProperties = {
   paddingInline: '10px',
   userSelect: 'none',
   backdropFilter: 'blur(8px)',
-  transition: 'background-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)'
+  transition: 'background-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)',
+  position: 'fixed',
+  'z-index': 1,
+  width: '100%'
 }
 
 const contentStyle: CSSProperties = {
@@ -68,7 +71,7 @@ const siderStyle: CSSProperties = {
   paddingInline: '8px',
   paddingBlock: 0,
   borderInlineEnd: '1px solid rgba(5, 5, 5, 0.06)',
-  marginInlineEnd: '-1px'
+  marginInlineEnd: '-1px',
 }
 
 const footerStyle: CSSProperties = {
@@ -100,6 +103,7 @@ onMounted(() => {
         banner
         closable
         type="info"
+        style="display: fixed;z-index: 101;"
       >
       </a-alert>
     </slot>
@@ -151,7 +155,7 @@ onMounted(() => {
     <a-layout>
       <a-layout-sider :style="siderStyle" v-model:collapsed="collapsed" v-if="isViewport">
         <slot name="navbar" />
-        <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
+        <a-menu v-model:selectedKeys="selectedKeys" mode="inline" :style="{overflow: 'auto', height: '100vh', position: 'fixed', left: 0, top: '95px', bottom: 0}">
           <a-sub-menu key="dashboard">
             <template #title>
               <span>
