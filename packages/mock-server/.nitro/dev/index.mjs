@@ -1,21 +1,22 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { Server } from 'node:http';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/node-fetch-native@1.6.4/node_modules/node-fetch-native/dist/polyfill.mjs';
+import { Server } from 'node:http';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { provider, isWindows } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/std-env@3.7.0/node_modules/std-env/dist/index.mjs';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, setResponseHeader, send, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, createError, getRouterParam, getQuery as getQuery$1, readBody } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/h3@1.12.0/node_modules/h3/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/ofetch@1.3.4/node_modules/ofetch/dist/node.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, setResponseHeader, send, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, createError, getRouterParam, getQuery as getQuery$1, readBody } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/h3@1.13.0/node_modules/h3/dist/index.mjs';
+import { createFetch as createFetch$1, Headers as Headers$1 } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/ofetch@1.4.1/node_modules/ofetch/dist/node.mjs';
 import destr from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/destr@2.0.3/node_modules/destr/dist/index.mjs';
-import { createCall, createFetch } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/unenv@1.9.0/node_modules/unenv/runtime/fetch/index.mjs';
+import { createCall, createFetch } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/unenv@1.10.0/node_modules/unenv/runtime/fetch/index.mjs';
 import { createHooks } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
 import { klona } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/klona@2.0.6/node_modules/klona/dist/index.mjs';
 import { snakeCase } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/scule@1.3.0/node_modules/scule/dist/index.mjs';
 import defu, { defuFn } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
-import { hash } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/ohash@1.1.3/node_modules/ohash/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/ufo@1.5.3/node_modules/ufo/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/unstorage@1.10.2_ioredis@5.4.1/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/unstorage@1.10.2_ioredis@5.4.1/node_modules/unstorage/drivers/fs.mjs';
+import { hash } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/ohash@1.1.4/node_modules/ohash/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/ufo@1.5.4/node_modules/ufo/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/unstorage@1.12.0_ioredis@5.4.1/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/unstorage@1.12.0_ioredis@5.4.1/node_modules/unstorage/drivers/fs.mjs';
 import { toRouteMatcher, createRouter } from 'file://D:/ZhouWei/openSource/template/node_modules/.pnpm/radix3@1.1.2/node_modules/radix3/dist/index.mjs';
 
 function getEnv(key, opts) {
@@ -107,7 +108,11 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"server","dir":"D:/ZhouWei/openSource/template/server/assets"}];
+<<<<<<< Updated upstream
+const serverAssets = [{"baseName":"server","dir":"D:/ZhouWei/openSource/template/packages/mock-server/assets"}];
+=======
+const serverAssets = [{"baseName":"server","dir":"D:/ZhouWei/openSource/template/packages/mock-server/server/assets"}];
+>>>>>>> Stashed changes
 
 const assets = createStorage();
 
@@ -119,11 +124,15 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"D:\\ZhouWei\\openSource\\template","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"D:\\ZhouWei\\openSource\\template\\server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"D:\\ZhouWei\\openSource\\template\\.nitro","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"D:\\ZhouWei\\openSource\\template\\.nitro\\cache","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"D:\\ZhouWei\\openSource\\template\\.data\\kv","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"D:\\ZhouWei\\openSource\\template\\packages\\mock-server","ignore":["**/node_modules/**","**/.git/**"]}));
+<<<<<<< Updated upstream
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"D:\\ZhouWei\\openSource\\template\\packages\\mock-server","ignore":["**/node_modules/**","**/.git/**"]}));
+=======
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"D:\\ZhouWei\\openSource\\template\\packages\\mock-server\\server","ignore":["**/node_modules/**","**/.git/**"]}));
+>>>>>>> Stashed changes
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"D:\\ZhouWei\\openSource\\template\\packages\\mock-server\\.nitro","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"D:\\ZhouWei\\openSource\\template\\packages\\mock-server\\.nitro\\cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"D:\\ZhouWei\\openSource\\template\\packages\\mock-server\\.data\\kv","ignore":["**/node_modules/**","**/.git/**"]}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -635,12 +644,17 @@ function renderHTMLError(error) {
 `;
 }
 
-const _lazy_uZTldy = () => Promise.resolve().then(function () { return analysis$1; });
-const _lazy_eHUFHl = () => Promise.resolve().then(function () { return index$1; });
+<<<<<<< Updated upstream
+const handlers = [
+
+=======
+const _lazy_wyFSYm = () => Promise.resolve().then(function () { return analysis$1; });
+const _lazy_nG7f6i = () => Promise.resolve().then(function () { return index$1; });
 
 const handlers = [
-  { route: '/dashboard/analysis', handler: _lazy_uZTldy, lazy: true, middleware: false, method: undefined },
-  { route: '/', handler: _lazy_eHUFHl, lazy: true, middleware: false, method: undefined }
+  { route: '/dashboard/analysis', handler: _lazy_wyFSYm, lazy: true, middleware: false, method: undefined },
+  { route: '/', handler: _lazy_nG7f6i, lazy: true, middleware: false, method: undefined }
+>>>>>>> Stashed changes
 ];
 
 function createNitroApp() {
@@ -860,9 +874,15 @@ parentPort.on("message", async (msg) => {
     parentPort.postMessage({ event: "exit" });
   }
 });
+<<<<<<< Updated upstream
+=======
 
 const analysis = eventHandler(() => {
-  return "analysis";
+  return {
+    code: 200,
+    message: "analysis",
+    data: {}
+  };
 });
 
 const analysis$1 = /*#__PURE__*/Object.freeze({
@@ -871,11 +891,16 @@ const analysis$1 = /*#__PURE__*/Object.freeze({
 });
 
 const index = eventHandler(() => {
-  return "Welcome to template admin";
+  return {
+    code: 200,
+    message: "Welcome to template admin",
+    data: {}
+  };
 });
 
 const index$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   default: index
 });
+>>>>>>> Stashed changes
 //# sourceMappingURL=index.mjs.map

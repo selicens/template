@@ -1,0 +1,25 @@
+{
+<<<<<<< Updated upstream
+  "date": "2024-10-13T14:37:53.438Z",
+=======
+  "date": "2024-10-13T04:53:05.703Z",
+>>>>>>> Stashed changes
+  "preset": "nitro-dev",
+  "framework": {
+    "name": "nitro",
+    "version": "2.9.7"
+  },
+  "versions": {
+    "nitro": "2.9.7"
+  },
+  "dev": {
+    "pid": 33476,
+    "workerAddress": {
+<<<<<<< Updated upstream
+      "socketPath": "\\\\.\\pipe\\nitro\\worker-33476-20.sock"
+=======
+      "socketPath": "\\\\.\\pipe\\nitro\\worker-33476-19.sock"
+>>>>>>> Stashed changes
+    }
+  }
+}

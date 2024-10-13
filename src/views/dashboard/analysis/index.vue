@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import { getData } from '@/services/index'
+import { getData } from '@/services/index'
 import IntroduceRow from './components/introduce-row.vue'
 import SalesCard from './components/sales-card.vue'
 import TopSearch from './components/top-search.vue'
@@ -9,11 +9,13 @@ import PageLoading from './components/pageLoading/page-loading.vue'
 
 defineOptions({ name: 'Analytics' })
 
-// const data = async () => {
-//   const res = await getData()
-//   console.log(res)
-// }
-// data()
+const data = async () => {
+  const res = await getData()
+  console.log(res)
+}
+data()
+
+
 const loading = ref(true)
 onBeforeMount(() => {
   loading.value = !loading.value

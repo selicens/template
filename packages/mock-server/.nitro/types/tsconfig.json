@@ -17,10 +17,17 @@
         "./nitro-imports"
       ],
       "~/*": [
+<<<<<<< Updated upstream
+        "../../*"
+      ],
+      "@/*": [
+        "../../*"
+=======
         "../../server/*"
       ],
       "@/*": [
         "../../server/*"
+>>>>>>> Stashed changes
       ],
       "~~/*": [
         "../../*"
@@ -32,7 +39,11 @@
   },
   "include": [
     "./nitro.d.ts",
+<<<<<<< Updated upstream
+    "../../**/*"
+=======
     "../../**/*",
     "../../server/**/*"
+>>>>>>> Stashed changes
   ]
 }

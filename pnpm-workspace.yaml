@@ -1,0 +1,7 @@
+packages:
+  - 'packages/*'
+
+catalog:
+  'vue': ^3.5.12
+  'ant-design-vue': ^4.2.5
+  '@ant-design/icons-vue': ^7.0.1

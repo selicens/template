@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {useTemplateRef} from 'vue'
 import { Line } from '@antv/g2plot'
 
 defineOptions({
@@ -10,7 +11,7 @@ const props = defineProps({
   }
 })
 
-const container = ref()
+const container = useTemplateRef('container')
 
 onMounted(() => {
   new Line(container.value, {

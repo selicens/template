@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BasicLayout from './components/layouts/BasicLayout.vue'
+import BasicLayout from 'pro-layout'
 import Index from './views/index.vue'
 import { onMounted } from 'vue'
 onMounted(() => {
@@ -9,9 +9,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <Index>
-    <BasicLayout> </BasicLayout>
-  </Index>
+  <a-config-provider>
+    <a-app>
+      <Index>
+        <BasicLayout> </BasicLayout>
+      </Index>
+    </a-app>
+  </a-config-provider>
 </template>
 
 <style scoped></style>

@@ -12,7 +12,7 @@ import {
   QuestionCircleOutlined,
   MenuOutlined
 } from '@ant-design/icons-vue'
-import InternationalIzation from '../icons/Internationalization.vue'
+import InternationalIzation from './conponents/icons/InternationalIzation.vue'
 
 defineOptions({
   name: 'BasicLayout'
@@ -108,6 +108,7 @@ onMounted(() => {
       </a-alert>
     </slot>
     <a-layout-header :style="headerStyle">
+    <div style="position: fixed; z-Index: -npm 9999; width: 100%; top: 0px;">
       <div class="layout-header">
         <a class="layout-header-left" v-if="isViewport">
           <slot name="logo" class="layout-header-left-logo">
@@ -151,11 +152,13 @@ onMounted(() => {
           </a-dropdown>
         </a-space>
       </div>
-    </a-layout-header>
-    <a-layout>
-      <a-layout-sider :style="siderStyle" v-model:collapsed="collapsed" v-if="isViewport">
+    </div>
+  </a-layout-header>
+  <a-layout has-sider>
+    <a-layout-sider :style="siderStyle" v-model:collapsed="collapsed" v-if="isViewport">
+      <div>
         <slot name="navbar" />
-        <a-menu v-model:selectedKeys="selectedKeys" mode="inline" :style="{overflow: 'auto', height: '100vh', position: 'fixed', left: 0, top: '95px', bottom: 0}">
+        <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
           <a-sub-menu key="dashboard">
             <template #title>
               <span>
@@ -211,19 +214,20 @@ onMounted(() => {
             <LeftOutlined />
           </template>
         </div>
-      </a-layout-sider>
-      <a-layout>
-        <a-layout-content :style="contentStyle">
-          <slot name="breadcrumb"> </slot>
-          <slot name="content">
-            <router-view />
-          </slot>
-        </a-layout-content>
-        <a-layout-footer :style="footerStyle">
-          <slot name="footer">Powered by Selicens</slot>
-        </a-layout-footer>
-      </a-layout>
+      </div>
+    </a-layout-sider>
+    <a-layout style="min-height: 100vh;">
+      <a-layout-content :style="contentStyle">
+        <slot name="breadcrumb"> </slot>
+        <slot name="content">
+          <router-view />
+        </slot>
+      </a-layout-content>
+      <a-layout-footer :style="footerStyle">
+        <slot name="footer">Powered by Selicens</slot>
+      </a-layout-footer>
     </a-layout>
+  </a-layout>
     <div class="layout-bg">
       <img
         src="https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/F6vSTbj8KpYAAAAAAAAAAAAAFl94AQBr"
