@@ -1,56 +1,55 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite-plus'
 import vue from '@vitejs/plugin-vue'
-import autoImport from 'unplugin-auto-import/vite'
-import components from 'unplugin-vue-components/vite'
-import { AntDesignVueResolver } from "unplugin-vue-components/resolvers"
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { AntdvNextResolver } from '@antdv-next/auto-import-resolver'
 
-import vueRouter from 'unplugin-vue-router/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
-import vueDevTools from 'vite-plugin-vue-devtools'
-
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    autoImport({
-      imports: [
-        'vue',
-        'pinia',
-        VueRouterAutoImports
-      ],
-      dts: true,
+    AutoImport({
+      imports: ["vue", "vue-router"],
+      dts: "types/auto-imports.d.ts",
     }),
-    components({
-      dts: true,
-      extensions: ['vue'],
+    Components({
       resolvers: [
-        AntDesignVueResolver({
-          importStyle: false,
-        })
-      ]
+        AntdvNextResolver({
+          resolveIcons: true,
+        }),
+      ],
+      dts: "types/components.d.ts",
     }),
-    vueRouter({
-      routesFolder: [{
-        src: 'src/views'
-      }],
-      dts: true
-    }),
-    vueDevTools()
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
-  server: {
-    proxy: {
-      '/mock/': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/mock/, '')
-      }
-    }
-  }
-})
+  lint: {
+    ignorePatterns: ["dist/**"],
+  },
+  fmt: {
+    semi: true,
+    singleQuote: true,
+  },
+  build: {
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            {
+              name: "vue-vendor",
+              test: /[\\/]node_modules[\\/](vue|vue-router|pinia|vue-i18n|@vueuse[\\/]core)[\\/]/,
+            },
+            {
+              name: "ui-vendor",
+              test: /[\\/]node_modules[\\/](antdv-next|@antdv-next[\\/]icons|dayjs)[\\/]/,
+            },
+          ],
+        },
+      },
+    },
+  },
+});
