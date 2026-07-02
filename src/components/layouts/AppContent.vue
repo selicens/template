@@ -69,24 +69,28 @@ const getMenuItems = (tab: { closable: boolean }) => [
 ]
 
 const tabItems = computed(() =>
-  props.tabs.map(t => ({
+  props.tabs.map((t) => ({
     key: t.key,
-    label: h(Dropdown, {
-      trigger: ['contextmenu'],
-      menu: {
-        items: getMenuItems({
-          closable: t.closable
-        }),
-        onClick: ({ key }: { key: string }) => handleMenuSelect(key, t.key),
+    label: h(
+      Dropdown,
+      {
+        trigger: ['contextmenu'],
+        menu: {
+          items: getMenuItems({
+            closable: t.closable,
+          }),
+          onClick: ({ key }: { key: string }) => handleMenuSelect(key, t.key),
+        },
       },
-    }, () => h('span', { style: 'cursor: pointer' }, t.label)),
+      () => h('span', { style: 'cursor: pointer' }, t.label),
+    ),
     closable: t.closable,
-  }))
+  })),
 )
-  const styles = {
-    header: {
-    backgroundColor: '1px solid var(--ant-color-bg-container)'
-  }
+const styles = {
+  header: {
+    backgroundColor: '1px solid var(--ant-color-bg-container)',
+  },
 }
 </script>
 
@@ -113,7 +117,7 @@ const tabItems = computed(() =>
                 { key: 'closeRight', label: h('span', null, t('tabs.closeRight')) },
                 { key: 'closeAll', label: h('span', null, t('tabs.closeAll')) },
               ],
-              onClick: ({ key }: { key: string }) => handleMenuSelect(key, activeKey)
+              onClick: ({ key }: { key: string }) => handleMenuSelect(key, activeKey),
             }"
             :trigger="['click']"
           >

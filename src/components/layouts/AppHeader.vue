@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { BulbOutlined, GlobalOutlined, LogoutOutlined, MenuOutlined, UserOutlined } from '@antdv-next/icons'
+import {
+  BulbOutlined,
+  GlobalOutlined,
+  LogoutOutlined,
+  MenuOutlined,
+  UserOutlined,
+} from '@antdv-next/icons'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
@@ -7,7 +13,12 @@ const props = defineProps<{
   showTopMenu: boolean
   showLogo: boolean
   showHamburger?: boolean
-  menuItems: { key: string; label: string; icon?: string; children?: { key: string; label: string }[] }[]
+  menuItems: {
+    key: string
+    label: string
+    icon?: string
+    children?: { key: string; label: string }[]
+  }[]
   userMenuItems: { key: string; label: string }[]
   langMenuItems: { key: string; label: string }[]
   themeMenuItems: { key: string; label: string }[]

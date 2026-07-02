@@ -35,7 +35,12 @@ onMounted(fetchDashboard)
           <a-statistic :title="t('views.dashboard.visits')" :value="93832" :precision="0" />
         </a-col>
         <a-col :span="6">
-          <a-statistic :title="t('views.dashboard.conversion')" :value="2.8" :precision="1" suffix="%" />
+          <a-statistic
+            :title="t('views.dashboard.conversion')"
+            :value="2.8"
+            :precision="1"
+            suffix="%"
+          />
         </a-col>
         <a-col :span="6">
           <a-statistic :title="t('views.dashboard.activeUsers')" :value="735" />

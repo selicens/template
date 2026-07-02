@@ -8,7 +8,8 @@
     "build": "vp build",
     "preview": "vp preview",
     "check": "vp check",
-    "test": "vp test"
+    "test": "vp test",
+    "fmt": "vp fmt"
   },
   "dependencies": {
     "@antdv-next/icons": "latest",
@@ -32,11 +33,11 @@
     "vite-plus": "^0.2.1",
     "vue-tsc": "^3.3.5"
   },
-  "engines": {
-    "node": "^22.18.0 || >=24.12.0"
-  },
   "overrides": {
     "vite": "npm:@voidzero-dev/vite-plus-core@latest"
+  },
+  "engines": {
+    "node": "^22.18.0 || >=24.12.0"
   },
   "packageManager": "pnpm@11.9.0"
 }

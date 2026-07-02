@@ -10,8 +10,8 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports: ["vue", "vue-router"],
-      dts: "types/auto-imports.d.ts",
+      imports: ['vue', 'vue-router'],
+      dts: 'types/auto-imports.d.ts',
     }),
     Components({
       resolvers: [
@@ -19,19 +19,19 @@ export default defineConfig({
           resolveIcons: true,
         }),
       ],
-      dts: "types/components.d.ts",
+      dts: 'types/components.d.ts',
     }),
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   lint: {
-    ignorePatterns: ["dist/**"],
+    ignorePatterns: ['dist/**'],
   },
   fmt: {
-    semi: true,
+    semi: false,
     singleQuote: true,
   },
   build: {
@@ -40,11 +40,11 @@ export default defineConfig({
         codeSplitting: {
           groups: [
             {
-              name: "vue-vendor",
+              name: 'vue-vendor',
               test: /[\\/]node_modules[\\/](vue|vue-router|pinia|vue-i18n|@vueuse[\\/]core)[\\/]/,
             },
             {
-              name: "ui-vendor",
+              name: 'ui-vendor',
               test: /[\\/]node_modules[\\/](antdv-next|@antdv-next[\\/]icons|dayjs)[\\/]/,
             },
           ],
@@ -52,4 +52,4 @@ export default defineConfig({
       },
     },
   },
-});
+})

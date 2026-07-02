@@ -8,7 +8,7 @@ export interface TabItem {
   closable: boolean
 }
 
-declare module "vue-router" {
+declare module 'vue-router' {
   interface RouteMeta {
     title?: string
   }
@@ -18,17 +18,17 @@ export const useTabStore = defineStore('tabs', () => {
   const route = useRoute()
   const router = useRouter()
 
-  const tabs = ref<TabItem[]>([{ key: "/", title: 'menu.home', closable: false }]);
+  const tabs = ref<TabItem[]>([{ key: '/', title: 'menu.home', closable: false }])
 
   const activeKey = ref('/')
 
   function getTitle(path: string): string {
-    const targetRoute = router.getRoutes().find(r => r.path === path)
+    const targetRoute = router.getRoutes().find((r) => r.path === path)
     return targetRoute?.meta?.title || path
   }
 
   function addTab(path: string) {
-    if (!tabs.value.find(t => t.key === path)) {
+    if (!tabs.value.find((t) => t.key === path)) {
       tabs.value.push({
         key: path,
         title: getTitle(path),
@@ -39,7 +39,7 @@ export const useTabStore = defineStore('tabs', () => {
   }
 
   function removeTab(key: string) {
-    const idx = tabs.value.findIndex(t => t.key === key)
+    const idx = tabs.value.findIndex((t) => t.key === key)
     if (idx === -1) return
     tabs.value.splice(idx, 1)
     if (activeKey.value === key) {
@@ -55,39 +55,37 @@ export const useTabStore = defineStore('tabs', () => {
   }
 
   function closeAll() {
-    const nonClosable = tabs.value.filter(t => !t.closable)
+    const nonClosable = tabs.value.filter((t) => !t.closable)
     tabs.value = nonClosable
     activeKey.value = nonClosable[0]?.key || '/'
     router.push(activeKey.value)
   }
 
   function closeOthers(key: string) {
-    const current = tabs.value.find(t => t.key === key)
+    const current = tabs.value.find((t) => t.key === key)
     if (!current) return
-    const nonClosable = tabs.value.filter(t => !t.closable)
-    tabs.value = current.closable
-      ? [...nonClosable, current]
-      : [current]
+    const nonClosable = tabs.value.filter((t) => !t.closable)
+    tabs.value = current.closable ? [...nonClosable, current] : [current]
     activeKey.value = key
     router.push(key)
   }
 
   function closeLeft(key: string) {
-    const idx = tabs.value.findIndex(t => t.key === key)
+    const idx = tabs.value.findIndex((t) => t.key === key)
     if (idx === -1) return
     const current = tabs.value[idx]
     const keepRight = tabs.value.slice(idx)
-    const nonClosableLeft = tabs.value.slice(0, idx).filter(t => !t.closable)
+    const nonClosableLeft = tabs.value.slice(0, idx).filter((t) => !t.closable)
     tabs.value = [...nonClosableLeft, ...keepRight]
     activeKey.value = key
     router.push(key)
   }
 
   function closeRight(key: string) {
-    const idx = tabs.value.findIndex(t => t.key === key)
+    const idx = tabs.value.findIndex((t) => t.key === key)
     if (idx === -1) return
     const keepLeft = tabs.value.slice(0, idx + 1)
-    const nonClosableRight = tabs.value.slice(idx + 1).filter(t => !t.closable)
+    const nonClosableRight = tabs.value.slice(idx + 1).filter((t) => !t.closable)
     tabs.value = [...keepLeft, ...nonClosableRight]
     activeKey.value = key
     router.push(key)
@@ -103,8 +101,19 @@ export const useTabStore = defineStore('tabs', () => {
     (path) => {
       addTab(path)
     },
-    { immediate: true }
+    { immediate: true },
   )
 
-  return { tabs, activeKey, addTab, removeTab, activateTab, closeAll, closeOthers, closeLeft, closeRight, refresh }
+  return {
+    tabs,
+    activeKey,
+    addTab,
+    removeTab,
+    activateTab,
+    closeAll,
+    closeOthers,
+    closeLeft,
+    closeRight,
+    refresh,
+  }
 })

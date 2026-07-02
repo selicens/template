@@ -34,10 +34,13 @@ const menuItems = computed(() => [
   { key: '/', label: t('menu.home') },
   { key: '/login', label: t('menu.login') },
   {
-    key: '/er', label: t('menu.multiLevel'), children: [
+    key: '/er',
+    label: t('menu.multiLevel'),
+    children: [
       { key: '/er/er1', label: t('menu.level2_1') },
       { key: '/er/er2', label: t('menu.level2_2') },
-    ]}
+    ],
+  },
 ])
 
 const handleMenuClick = ({ key }: { key: string }) => {
@@ -136,7 +139,7 @@ const tabItems = ref<{ key: string; label: string; closable: boolean }[]>([])
 watchEffect(() => {
   // Access both reactive deps to ensure tracking
   locale.value
-  tabItems.value = tabStore.tabs.map(tab => ({
+  tabItems.value = tabStore.tabs.map((tab) => ({
     key: tab.key,
     label: t(tab.title),
     closable: tab.closable,
@@ -148,15 +151,15 @@ const appTheme = computed(() => ({
   components: {
     Layout: {
       headerBg: 'var(--ant-color-bg-container)',
-      siderBg: 'var(--ant-color-bg-container)'
+      siderBg: 'var(--ant-color-bg-container)',
     },
     Menu: {
       itemSelectedBg: 'var(--ant-menu-color-item-bg-selected)',
       itemSelectedColor: 'var(--ant-menu-item-color)',
       subMenuItemSelectedColor: 'var(--ant-menu-item-color)',
-      horizontalItemSelectedColor: 'var(--ant-menu-item-color)'
-    }
-  }
+      horizontalItemSelectedColor: 'var(--ant-menu-item-color)',
+    },
+  },
 }))
 
 const layoutMode = computed(() => themeStore.layoutMode)

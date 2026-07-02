@@ -7,7 +7,12 @@ const props = defineProps<{
   collapsed: boolean
   showLogo: boolean
   fullHeight: boolean
-  menuItems: { key: string; label: string; icon?: string; children?: { key: string; label: string }[] }[]
+  menuItems: {
+    key: string
+    label: string
+    icon?: string
+    children?: { key: string; label: string }[]
+  }[]
 }>()
 
 const emit = defineEmits<{
@@ -123,6 +128,9 @@ const handleMenuClick = ({ key }: { key: string }) => {
   cursor: pointer;
   color: var(--ant-color-text-secondary);
   background-color: var(--ant-color-bg-container);
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.05), 0 1px 4px -1px rgba(25, 15, 15, 0.07), 0 0 1px 0 rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 2px 8px -2px rgba(0, 0, 0, 0.05),
+    0 1px 4px -1px rgba(25, 15, 15, 0.07),
+    0 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 </style>

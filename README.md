@@ -4,16 +4,16 @@
 
 ## 技术栈
 
-| 类别 | 技术 |
-| ------ | ------ |
-| 框架 | Vue 3.5 + TypeScript |
-| UI 组件 | antdv-next |
-| 状态管理 | Pinia |
-| 路由 | VueRouter |
-| 国际化 | vue-i18n |
-| HTTP | Axios |
-| 构建工具 | Vite Plus |
-| 包管理 | pnpm |
+| 类别     | 技术                 |
+| -------- | -------------------- |
+| 框架     | Vue 3.5 + TypeScript |
+| UI 组件  | antdv-next           |
+| 状态管理 | Pinia                |
+| 路由     | VueRouter            |
+| 国际化   | vue-i18n             |
+| HTTP     | Axios                |
+| 构建工具 | Vite Plus            |
+| 包管理   | pnpm                 |
 
 ## 功能特性
 
@@ -54,3 +54,4 @@ pnpm build
 
 # 预览生产构建
 pnpm preview
+```

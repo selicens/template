@@ -25,25 +25,20 @@ const handleWatermarkChange = (checked: boolean) => {
 
 <template>
   <div>
-    <a-button
-      type="primary"
-      shape="circle"
-      class="settings-btn"
-      @click="visible = true"
-    >
+    <a-button type="primary" shape="circle" class="settings-btn" @click="visible = true">
       <SettingOutlined />
     </a-button>
 
-    <a-drawer
-      v-model:open="visible"
-      :title="t('layout.settings')"
-      :size="280"
-      placement="right"
-    >
+    <a-drawer v-model:open="visible" :title="t('layout.settings')" :size="280" placement="right">
       <div class="drawer-content">
         <div class="section-title">{{ t('layout.layoutMode') }}</div>
         <div class="layout-cards">
-          <a-tooltip v-for="opt in layoutOptions" :key="opt.key" :title="opt.desc" placement="bottom">
+          <a-tooltip
+            v-for="opt in layoutOptions"
+            :key="opt.key"
+            :title="opt.desc"
+            placement="bottom"
+          >
             <div
               class="layout-card"
               :class="{ active: themeStore.layoutMode === opt.key }"

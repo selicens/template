@@ -19,7 +19,8 @@ request.interceptors.request.use((config) => {
 request.interceptors.response.use(
   (response) => response.data,
   (error) => {
-    const message = error.response?.data?.message || error.message || i18n.global.t('common.requestFailed')
+    const message =
+      error.response?.data?.message || error.message || i18n.global.t('common.requestFailed')
     return Promise.reject(new Error(message))
   },
 )
