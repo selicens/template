@@ -7,6 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { AntdvNextResolver } from '@antdv-next/auto-import-resolver'
 
 export default defineConfig({
+  base: '/template/',
   plugins: [
     vue(),
     AutoImport({
@@ -45,7 +46,7 @@ export default defineConfig({
             },
             {
               name: 'ui-vendor',
-              test: /[\\/]node_modules[\\/](antdv-next|@antdv-next[\\/]icons|dayjs)[\\/]/,
+              test: /[\\/]node_modules[\\/](antdv-next|@antdv-next[\\/](?:icons|x)|dayjs|mermaid|shiki)[\\/]/,
             },
           ],
         },

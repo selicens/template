@@ -30,6 +30,7 @@ export default {
     multiLevel: '多级菜单',
     level2_1: '二级1',
     level2_2: '二级2',
+    ai: 'AI 对话',
   },
   header: {
     username: 'Admin',
@@ -49,6 +50,16 @@ export default {
     closeAll: '关闭所有',
   },
   views: {
+    ai: {
+      title: 'AI 助手',
+      placeholder: '请输入消息...',
+      welcomeTitle: '你好，我是 AI 助手',
+      welcomeDescription: '我可以帮你回答问题、编写代码、分析内容等',
+      promptQuick1: '帮我写一段代码',
+      promptQuick2: '解释这个概念',
+      promptQuick3: '总结这段文本',
+      promptQuick4: '给我一些建议',
+    },
     dashboard: {
       title: '欢迎使用后台管理系统',
       description: '基于 Vite+(即vite-plus) + pnpm + vue + antdv-next 构建',

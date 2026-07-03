@@ -13,6 +13,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/ai',
+      name: 'ai',
+      component: () => import('../views/AIChatView.vue'),
+      meta: {
+        title: 'menu.ai',
+      },
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue'),

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@antdv-next/icons": "latest",
+    "@antdv-next/x": "^1.1.1",
     "antdv-next": "^1.3.7",
     "axios": "^1.18.1",
     "pinia": "^3.0.4",

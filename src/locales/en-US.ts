@@ -30,6 +30,7 @@ export default {
     multiLevel: 'Multi Level',
     level2_1: 'Level 2-1',
     level2_2: 'Level 2-2',
+    ai: 'AI Chat',
   },
   header: {
     username: 'Admin',
@@ -49,6 +50,16 @@ export default {
     closeAll: 'Close All',
   },
   views: {
+    ai: {
+      title: 'AI Assistant',
+      placeholder: 'Type a message...',
+      welcomeTitle: 'Hello, I am AI Assistant',
+      welcomeDescription: 'I can help you answer questions, write code, analyze content, and more',
+      promptQuick1: 'Write some code for me',
+      promptQuick2: 'Explain this concept',
+      promptQuick3: 'Summarize this text',
+      promptQuick4: 'Give me some suggestions',
+    },
     dashboard: {
       title: 'Welcome to Admin Dashboard',
       description: 'Built with Vite+(vite-plus) + pnpm + vue + antdv-next',

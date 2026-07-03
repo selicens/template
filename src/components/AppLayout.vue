@@ -32,6 +32,7 @@ const onScroll = () => {
 
 const menuItems = computed(() => [
   { key: '/', label: t('menu.home') },
+  { key: '/ai', label: t('menu.ai') },
   { key: '/login', label: t('menu.login') },
   {
     key: '/er',
